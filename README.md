@@ -1,0 +1,1 @@
+# org.geckoprojects.bnd.template
