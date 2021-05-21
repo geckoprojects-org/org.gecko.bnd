@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<repository xmlns="http://www.osgi.org/xmlns/repository/v1.0.0" name="Release" increment="1621538377106">
+  <resource>
+    <capability namespace="osgi.identity">
+      <attribute name="license" value="Apache License 2.0"/>
+      <attribute name="copyright" value="Data In Motion Consuling GmbH - All rights reserved"/>
+      <attribute name="osgi.identity" value="org.gecko.bnd.templates.workspace.base"/>
+      <attribute name="documentation" value="https://github.com/geckoprojects-org/org.geckoprojects.bnd.template"/>
+      <attribute name="type" value="osgi.bundle"/>
+      <attribute name="version" value="0.0.1.SNAPSHOT" type="Version"/>
+    </capability>
+    <capability namespace="osgi.wiring.bundle">
+      <attribute name="bundle-version" value="0.0.1.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.bundle" value="org.gecko.bnd.templates.workspace.base"/>
+    </capability>
+    <capability namespace="osgi.wiring.host">
+      <attribute name="bundle-version" value="0.0.1.SNAPSHOT" type="Version"/>
+      <attribute name="osgi.wiring.host" value="org.gecko.bnd.templates.workspace.base"/>
+    </capability>
+    <capability namespace="org.bndtools.template">
+      <attribute name="help" value="help.xml"/>
+      <attribute name="engine" value="mustache"/>
+      <attribute name="name" value="geckoprojects-org Workspace"/>
+      <attribute name="icon" value="data:image/gif;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAABAQAgABAAEAsAAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECY+AAAAAAAaP2dbG0BqeRk8ZHsaPWWNAAAAJQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgTH6PI1aMFAAAAAAAAAAAAAAAACNTinIPIzlVAAAAAAAAAAAAAAAAAAAAAAAAAAAONx85AAAAABRUKykfSHp8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEp7fwAAAA0AAAAAAAAAAAAAAAAXWTNZGF02uA45IUAWXC1ZHURxdSWUVhgQQCV1CSYVMQAAAAAAAAAZAAAACShfnTcOIzlDAAAAAAAAAAAhfkkAAAAAABtqPYgXXDSaGjtmTw4cPzQZYDejGmk82gMPBigbWE6qHG48jQAAAAcoXpseGT1kXAAAAAAAAAAAAAAAAAAAAAAAAAAAFlYxTyhboz0BAwgpHXJBVhJHKEgAAAAAGUNclwAAAAAAAAAAIU+BaAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAABVRL2YrZKY0DR8zPyebWRcMMRxDAAAAACJSiU8ZPGOSHUVyhh9LfEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTCteAAAAABg5X34AAAAAE0srYAAAAAAAAAAAAAAAAAAAAACH//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAigEoAGmc8SQAAAAgaQGqFAAAAABJJKVMGGw8qFVIvqAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACulXwoQPSNfKWGfQwkXJkYbajxpF102Ph50Qv4AAgIkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH3xHMgYfBUIgTH6NAAAAGwAAAAAppF8JAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjiE8lED4jcBo7aqQMLh5MEUYlYBlhOFgXXC5PEkknaQwwHD4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF1kzbxNLK20WYCdJIk+HXRczYIQYOWFtHUJzeBZKPnUUUS8VAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIoJLACGCTD8XWzTGDjkhQAAAAAAcdjYzEUggWRVYLFsYXjYUSP+fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhg0oaG2g8RAAAAAAAAAAAIVgiAAAAAAAAAAAAI4lOAAAAAAAAAAAAAAAAAP//AAD/3wAA/f8AAP//AADf/wAAzJ8AAP+/AAD/zwAA//8AAPu/AAD/vwAA/f8AAP7/AAD/vwAA/f8AAP//AAAoAAAAEAAAACAAAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="/>
+      <attribute name="metaType" value="help-metatype.xml"/>
+      <attribute name="org.bndtools.template" value="workspace"/>
+      <attribute name="category" value="Workspace Extensions"/>
+      <attribute name="dir" value="template"/>
+    </capability>
+    <capability namespace="osgi.content">
+      <attribute name="size" value="30700" type="Long"/>
+      <attribute name="url" value="org.gecko.bnd.templates.workspace.base/org.gecko.bnd.templates.workspace.base-0.0.1.jar"/>
+      <attribute name="mime" value="application/vnd.osgi.bundle"/>
+      <attribute name="osgi.content" value="7148C633809D535D7EC7C798B0DF6190248988024D85FF43C43E74880F762001"/>
+    </capability>
+  </resource>
+</repository>

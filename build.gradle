@@ -1,0 +1,14 @@
+// Available to customize the build
+tasks.named('wrapper') {
+  jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
+}
+
+
+subprojects.each { sp ->
+  sp.tasks.each { t ->
+    if(t.name == "testOSGi"){
+      t.enabled = false
+      t.dependsOn = []
+    }
+  }
+}
