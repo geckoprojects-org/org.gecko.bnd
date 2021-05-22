@@ -4,12 +4,19 @@
 
 
 ## initial setup
+Create a empty [GitHub](https://github.com/organizations/geckoprojects-org/repositories/new) repository with the name `€€project-symbolic-name€€`
 
-Copy this to an new Issue in your Project
+Copy this to an [new Issue in your new Repository](https://github.com/geckoprojects-org/org.geckoprojects.http.client/issues/new?title=initial%20repository%20configuration&body=s)
 
-`initial Setup`
 
 ```
+- [ ] execute this in your local folder
+git init
+git add .
+git commit -m "initial commit"
+git branch -M main
+git remote add origin git@github.com:geckoprojects-org/€€project-symbolic-name€€.git
+git push -u origin main
 
 - [ ] do the [Sonar Configuration](https://sonarcloud.io/organizations/geckoprojects-org/projects)
   - [ ] press `+`_(upper right)_ - Analyze new project
