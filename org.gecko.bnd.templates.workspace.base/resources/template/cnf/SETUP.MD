@@ -7,7 +7,8 @@
   
 ## Sonatcloude - add Project
 - do the [Sonar Configuration](https://sonarcloud.io/organizations/geckoprojects-org/projects)
-  - press `+`_(upper right)_ - Analyze new project
+  - press `+`_(upper right)_
+  - Analyze new project
   - check `€€project-symbolic-name€€` and `SetUp`
   - Select `with a GitHub Action`
   - Copy the `SONAR_TOKEN` to notepad
@@ -17,6 +18,7 @@
 
 ## Git init and push
 - execute this in your local folder
+
 ```
 git init
 git add .
@@ -29,9 +31,8 @@ git push --set-upstream origin snapshot
 ```
 
 ## GitHub Branch-Protection
-- Project->Settings
-  - Branches - [add rule](https://github.com/geckoprojects-org/€€project-symbolic-name€€/settings/branch_protection_rules/new)
-  - Branch name pattern: `[ms][an][ia][np]*` `(ugly but works, protects 'main*' and 'snap*' by charachter )`
+- Project -> Settings  -> Branches [add rule](https://github.com/geckoprojects-org/€€project-symbolic-name€€/settings/branch_protection_rules/new)
+  - Branch name pattern: `[ms][an][ia][np]*` *(ugly but works, protects 'main*' and 'snap*' by charachter )*
   - Require pull request reviews before merging
     - 1 reviewer
     - Dismiss stale pull request approvals when new commits are pushed
