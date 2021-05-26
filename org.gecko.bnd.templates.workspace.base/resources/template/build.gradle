@@ -22,19 +22,16 @@ tasks.named('wrapper') {
   jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
 }
 
+
+// Disable bnd plugin built-in task 'testOSGi' and register custom task for testing
+gradle.startParameter.excludedTaskNames += "testOSGi"
+
+
 tasks.register('itest'){
   subprojects.each { sp ->
     sp.tasks.each { t -> 
       if(t.name ==~ "resolve\\.(test|export)(.*)?"){
         dependsOn t
-      }
-    }
-  }
-  subprojects.each { sp ->
-    sp.tasks.each { t ->
-      if(t.name == "testOSGi"){
-        t.enabled = false
-        t.dependsOn = []
       }
     }
   }

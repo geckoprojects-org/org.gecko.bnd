@@ -6,7 +6,7 @@
 ## initial setup
 Create a empty [GitHub](https://github.com/organizations/geckoprojects-org/repositories/new) repository with the name `€€project-symbolic-name€€`
 
-Copy this to an [new Issue in your new Repository](https://github.com/geckoprojects-org/org.geckoprojects.http.client/issues/new?title=initial%20repository%20configuration&body=s)
+Cut and paste this to an [new Issue in your new Repository](https://github.com/geckoprojects-org/€€project-symbolic-name€€/issues/new?title=initial%20repository%20configuration&body=s)
 
 
 ```
@@ -22,14 +22,14 @@ git push -u origin main
   - [ ] press `+`_(upper right)_ - Analyze new project
   - [ ] check `€€project-symbolic-name€€` and `SetUp`
   - [ ] Select `with a GitHub Action`
-  - [ ] Copy the `SONAR_TOKEN`
+  - [ ] Copy the `SONAR_TOKEN` to notepad
   - [ ] NOT!!!! follow the description .about `github/workflows/build.yml`. _this still [exists](../blob/main/.github/workflows/sonar.yml) in this template._
-  - [ ] Project-Settings -  Secrets - New Repository Secrets - add `SONAR_TOKEN`
+  - [ ] Project-Settings -  Secrets - [New Repository Secrets](https://github.com/geckoprojects-org/€€project-symbolic-name€€/settings/secrets/actions/new) - add `SONAR_TOKEN`
 
 - [ ] Branches
   - [ ] create a `snapshot` branche `git checkout -b snapshot && git push --set-upstream origin snapshot`
   - [ ] Secure using Setting
-    - [ ] Branches - add rule
+    - [ ] Branches - [add rule](https://github.com/geckoprojects-org/org.geckoprojects.http.client/settings/branch_protection_rules/new)
       - [ ] Branch name pattern: `[ms][an][ia][np]*` `(ugly but works, protects 'main*' and 'snap*' by charachter )`
       - [ ] Require pull request reviews before merging
         - [ ] 1 reviewer
