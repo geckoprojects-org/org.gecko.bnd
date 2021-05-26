@@ -1,3 +1,4 @@
 <form>
-<p>Adds all the necessary settings to establish our jenkins build, including baselining and a prepared release to maven central. </p>
+<p>Adds all the necessary settings to establish our github and jenkins build, including baselining and a prepared release to maven central. </p>
+<p>Read <b>SETUP.MD</b> when workspace is created.</p>
 </form>
