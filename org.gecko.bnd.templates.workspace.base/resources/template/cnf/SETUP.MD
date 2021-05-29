@@ -16,6 +16,23 @@
   - GitHub -> Project-Settings -> Secrets -> [New Repository Secrets](Link: https://github.com/geckoprojects-org/€€project-symbolic-name€€/settings/secrets/actions/new)
     - add `SONAR_TOKEN`
 
+## Gradle init
+
+on linux Linux - make execubale 
+```
+chmod +x gradlew
+./gradlew --version
+```
+
+Info: 
+when runnng `./gradlew tasks` on this empty workspace you will get
+```
+* What went wrong:
+Task 'testOSGi' not found in root project '€€project-symbolic-name€€'.
+```
+This is okay!
+
+
 ## Git init and push
 - execute this in your local folder
 

@@ -3,12 +3,6 @@ tasks.named('wrapper') {
   jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
 }
 
+// Disable bnd plugin built-in task 'testOSGi' and register custom task for testing
+gradle.startParameter.excludedTaskNames += "testOSGi"
 
-subprojects.each { sp ->
-  sp.tasks.each { t ->
-    if(t.name == "testOSGi"){
-      t.enabled = false
-      t.dependsOn = []
-    }
-  }
-}
