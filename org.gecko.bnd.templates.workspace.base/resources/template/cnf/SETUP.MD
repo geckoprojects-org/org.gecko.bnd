@@ -13,7 +13,7 @@
   - Select `with a GitHub Action`
   - Copy the `SONAR_TOKEN` to notepad
   - NOT!!!! follow the description .about `github/workflows/build.yml`. _this still [exists](../blob/main/.github/workflows/sonar.yml) in this template._
-  - Project-Settings -> Secrets -> [New Repository Secrets](Link: https://github.com/geckoprojects-org/€€project-symbolic-name€€/settings/secrets/actions/new)
+  - GitHub -> Project-Settings -> Secrets -> [New Repository Secrets](Link: https://github.com/geckoprojects-org/€€project-symbolic-name€€/settings/secrets/actions/new)
     - add `SONAR_TOKEN`
 
 ## Git init and push
@@ -28,6 +28,7 @@ git remote add origin git@github.com:geckoprojects-org/€€project-symbolic-na
 git push -u origin main
 git checkout -b snapshot
 git push --set-upstream origin snapshot
+git checkout -b "initial"
 ```
 
 ## GitHub Branch-Protection
