@@ -8,5 +8,5 @@ Archive
 /reports/
 /generated/
 .to
-/cnf/cache/
+/cnf/cache/**
 /build/
