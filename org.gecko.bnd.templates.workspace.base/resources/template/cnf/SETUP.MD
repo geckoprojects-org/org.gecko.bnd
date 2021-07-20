@@ -1,11 +1,14 @@
-# initial setup
+# Initial Setup
 
-## Github - create Project
+## Basics
+
+The Maven groupid is defaulted to **€€project-symbolic-name€€** in *cnf/build.bnd* using the bnd **-groupid** instruction.
+
+## Github - Create Project
 - Create a empty [GitHub repository](https://github.com/organizations/geckoprojects-org/repositories/new)
   - Name: `€€project-symbolic-name€€`
   - DO NOT!!! use any DEFAULTS like README or license
-  
-## Sonatcloude - add Project
+## Sonarcloud - Add Project
 - do the [Sonar Configuration](https://sonarcloud.io/organizations/geckoprojects-org/projects)
   - press `+`_(upper right)_
   - Analyze new project
@@ -18,19 +21,20 @@
 
 ## Gradle init
 
-on linux Linux - make execubale 
+On Linux - make *gradlew* execubale:
 ```
 chmod +x gradlew
 ./gradlew --version
 ```
 
-Info: 
-when runnng `./gradlew tasks` on this empty workspace you will get
+**Info: **
+When running `./gradlew tasks` on this empty workspace you will get
+
 ```
 * What went wrong:
 Task 'testOSGi' not found in root project '€€project-symbolic-name€€'.
 ```
-This is okay!
+**This is okay!**
 
 
 ## Git init and push

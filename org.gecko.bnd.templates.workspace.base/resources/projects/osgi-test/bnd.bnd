@@ -1,0 +1,22 @@
+-buildpath:\
+	junit-jupiter-api,\
+	org.osgi.test.junit5,\
+	org.osgi.framework,\
+	org.osgi.test.common,\
+	org.osgi.service.cm,\
+	org.osgi.util.promise,\
+	org.osgi.annotation.versioning,\
+	org.osgi.test.assertj.framework,\
+	org.osgi.service.event,\
+	org.mockito.mockito-core,\
+	junit-jupiter-engine;version='5.7',\
+	junit-platform-commons,\
+	assertj-core,\
+	org.apiguardian.api
+	
+# Sometimes without DynamicImport Mockito will not find certain classes
+#DynamicImport-Package: org.eclipse.emf.*
+
+Bundle-Version: 1.0.0.SNAPSHOT
+
+Private-Package: {{basePackageName}}
