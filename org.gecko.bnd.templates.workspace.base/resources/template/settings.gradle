@@ -7,6 +7,7 @@ pluginManagement {
     mavenCentral()
     gradlePluginPortal()
   }
+  rootProject.name="€€project-symbolic-name€€"
 }
 plugins {
   id 'biz.aQute.bnd.workspace'
