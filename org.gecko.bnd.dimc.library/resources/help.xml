@@ -1,0 +1,4 @@
+<form>
+<p>Read cnf/<b>SETUP.MD</b> when workspace is created.</p>
+<p>Adds all the necessary settings to establish GitHub and Jenkins build, including a prepared release to maven central.</p>
+</form>

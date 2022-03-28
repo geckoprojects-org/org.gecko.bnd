@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/org.geckoprojects.bnd.template.workspace.base">
+  <OCD id="org.gecko.bnd.dimc.workspace.base" name="Gecko Workspace Template" description="Gecko Workspace with Data In Motion configuration">
+    <AD id="project-symbolic-name" type="String" name="Project Symbolic Name" description="The Project Symbolic Name" default="org.gecko.foo"/>
+  </OCD>
+</metatype:MetaData>

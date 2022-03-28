@@ -1,0 +1,2 @@
+-snapshot: ${tstamp}
+-pom: version=${versionmask;===s;${@version}}	

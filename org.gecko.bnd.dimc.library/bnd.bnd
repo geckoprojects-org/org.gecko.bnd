@@ -1,0 +1,28 @@
+-resourceonly: true
+-sources: false
+
+-includeresource: resources
+
+Provide-Capability: \
+	${gecko-base}
+
+gecko-base:\
+    bnd.library;\
+        bnd.library     		= gecko-dimc; \
+        path            		= library
+
+workspace-template-geckoprojects:\
+	org.bndtools.template;\
+		org.bndtools.template	= workspace; \
+		engine					= mustache; \
+		name					= Gecko Workspace; \
+		category				= Workspace Extensions; \
+		dir						= workspace; \
+		icon					= "${icondata}"; \
+		help					= help.xml;\
+		metaType				= help-metatype.xml
+        
+icondata: data:image/gif;base64,${base64;icons/gecko.ico}
+
+Bundle-Name: Bnd library for a Data In Motion setup
+Bundle-Description: Gecko DIM setup support as bndtools Library

@@ -1,0 +1,20 @@
+-plugin.jacoco: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository;\
+		releaseUrl			= "https://repo.maven.apache.org/maven2/"; \
+		snapshotUrl			= "https://oss.sonatype.org/content/repositories/snapshots/";\
+		index            	= "${.}/jacoco.maven" ;\
+		poll.time           = -1;\
+		readOnly            = true;\
+		name="Jacoco Dependencies"
+
+jacoco.version: 0.8.7
+
+## Runpath and vm args
+-runpath.jacoco:\
+	org.jacoco.agent,\
+	org.jacoco:org.jacoco.agent:jar:runtime
+
+-runvm.coverage: -javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;latest}=destfile=${target-dir}/jacoco.exec
+
+## BndPomRepository could load g_a_v_c sind 6.0.0
+-require-bnd: "(version>=6.2.0)"
