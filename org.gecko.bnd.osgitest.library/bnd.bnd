@@ -24,7 +24,6 @@ project-template-osgi-test:\
 		icon					= "${integration-test-icon}";\
 		help					= osgi-test-help.xml
        
-Bundle-Version: ${osgitest.version}
 Bundle-Name: Bnd library for OSGi-Test support
 Bundle-Description: Gecko OSGi tests with assertJ, Mockito and JUnit5 support as bndtools library
 

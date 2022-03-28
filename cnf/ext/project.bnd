@@ -1,7 +1,7 @@
-Bundle-DocURL: https://github.com/geckoprojects-org/${github.project}
-Bundle-SCM: url=https://github.com/geckoprojects-org/${github.project}, \
-	connection=scm:git:https://github.com/geckoprojects-org/${github.project}.git, \
-	developerConnection=scm:git:git@github.com:geckoprojects-org/${github.project}.git
+Bundle-DocURL: https://github.com/geckoprojects-org/${github-project}
+Bundle-SCM: url=https://github.com/geckoprojects-org/${github-project}, \
+	connection=scm:git:https://github.com/geckoprojects-org/${github-project}.git, \
+	developerConnection=scm:git:git@github.com:geckoprojects-org/${github-project}.git
 Bundle-Version: ${base-version}
 Bundle-License: Eclipse Public License 2.0
 Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved

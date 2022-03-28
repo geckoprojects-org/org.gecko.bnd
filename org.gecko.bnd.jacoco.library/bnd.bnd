@@ -11,6 +11,5 @@ gecko-base:\
         bnd.library     = gecko-jacoco; \
         path            = template
         
-Bundle-Version: ${jacoco.version}
 Bundle-Name: Bnd library for Jacoco
 Bundle-Description: Gecko Jacoco support as bndtools library
