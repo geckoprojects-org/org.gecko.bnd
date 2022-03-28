@@ -25,6 +25,4 @@ javac.target: 11
 -groupid: org.geckoprojects.bnd
 
 base-version: 1.0.0.SNAPSHOT
-jacoco.version: 0.8.7.SNAPSHOT
-osgitest.version: 1.1.0.SNAPSHOT
-github.project: org.gecko.bnd
+github-project: org.gecko.bnd
