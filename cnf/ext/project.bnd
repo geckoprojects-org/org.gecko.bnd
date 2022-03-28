@@ -1,0 +1,28 @@
+Bundle-DocURL: https://github.com/geckoprojects-org/${github.project}
+Bundle-SCM: url=https://github.com/geckoprojects-org/${github.project}, \
+	connection=scm:git:https://github.com/geckoprojects-org/${github.project}.git, \
+	developerConnection=scm:git:git@github.com:geckoprojects-org/${github.project}.git
+Bundle-Version: ${base-version}
+Bundle-License: Eclipse Public License 2.0
+Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
+Bundle-Vendor: Data In Motion Consuling GmbH
+Bundle-ContactAddress: info@data-in-motion.biz
+Bundle-Developers: \
+    sbischof; \
+        email="stbischof@bipolis.org"; \
+        name="Stefan Bischof"; \
+        roles="developer", \
+    jalbert; \
+        email="j.albert@data-in-motion.biz"; \
+        name="Juergen Albert"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.de"; \
+        roles="architect,developer", \
+    mhoffmann; \
+        name="Mark Hoffmann"; \
+        email="m.hoffmann@data-in-motion.biz"; \
+        url="https://www.datainmotion.de"; \
+        organization="Data In Motion"; \
+        organizationUrl="https://www.datainmotion.de"; \
+        roles="developer,architect"
+	

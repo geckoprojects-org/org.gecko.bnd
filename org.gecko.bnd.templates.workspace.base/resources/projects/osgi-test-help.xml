@@ -1,0 +1,4 @@
+<form>
+<p>Creates a default setup for a OSGi Integration Test. It also includes the test.bndrun to launch the test as Bnd OSGi Test Launcher.</p>
+<p>Remember, that the integration tests are automatically detected by Gradle, as long as the bndrun file starts with <b>test</b>.</p>
+</form>
