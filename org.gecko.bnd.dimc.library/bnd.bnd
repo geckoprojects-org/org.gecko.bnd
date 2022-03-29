@@ -4,7 +4,8 @@
 -includeresource: resources
 
 Provide-Capability: \
-	${gecko-base}
+	${gecko-base},\
+	${workspace-template-geckoprojects}
 
 gecko-base:\
     bnd.library;\
@@ -15,7 +16,7 @@ workspace-template-geckoprojects:\
 	org.bndtools.template;\
 		org.bndtools.template	= workspace; \
 		engine					= mustache; \
-		name					= Gecko Workspace; \
+		name					= Gecko DIM GitHub Workspace; \
 		category				= Workspace Extensions; \
 		dir						= workspace; \
 		icon					= "${icondata}"; \
