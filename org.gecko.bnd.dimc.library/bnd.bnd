@@ -8,7 +8,8 @@ category: ccc/Gecko OSGi Standard Templates
 Provide-Capability: \
 	${gecko-base},\
 	${workspace-template-geckoprojects},\
-	${project-template-osgi-lib}
+	${project-template-osgi-lib},\
+	${project-template-config}
 
 gecko-base:\
     bnd.library;\
@@ -31,11 +32,22 @@ project-template-osgi-lib:\
 		name=Library Repacking;\
 		category=${category};\
 		ranking:Double=1010;\
-		dir=templates/osgi-lib;\
+		dir=project/osgi-lib;\
 		icon="${icondata}"; \
 		help=osgi-lib-help.xml;\
 		engine=mustache;\
 		metaType=osgi-lib-metatype.xml
+		
+project-template-config:\
+	org.bndtools.template; org.bndtools.template=project;\
+		name=Configurator;\
+		category=${category};\
+		ranking:Double=1001;\
+		dir=project/config;\
+		icon="${icondata}"; \
+		help=config-help.xml;\
+		engine=mustache
+
 
         
 icondata: data:image/gif;base64,${base64;icons/gecko.ico}
