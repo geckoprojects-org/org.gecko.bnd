@@ -1,4 +1,0 @@
-<form>
-<p>Read cnf/<b>SETUP.MD</b> when workspace is created.</p>
-<p>Adds all the necessary settings to establish our github and jenkins build, including baselining and a prepared release to maven central. </p>
-</form>

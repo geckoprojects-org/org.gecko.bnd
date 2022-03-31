@@ -1,4 +1,0 @@
-org.geckoprojects.bnd:org.gecko.bnd.dimc.library:1.0.0
-org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:0.8.7
-org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:1.1.0
-org.geckoprojects.bnd:org.gecko.bnd.templates.workspace.base:1.0.0
