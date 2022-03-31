@@ -1,0 +1,14 @@
+lib.version: {{JARVersion}}
+
+-buildpath:  \
+	{{JARGroupId}}:{{JARArtifactId}};version=${lib.version}
+	
+-includeresource: \
+	OSGI-OPT/src=@${repo;{{JARGroupId}}:{{JARArtifactId}}:jar:sources;${lib.version};EXACT}
+
+Bundle-Version: ${lib.version}
+Bundle-Localization: bundle
+Bundle-Name: {{BundleName}}
+Bundle-Vendor: {{BundleVendor}}
+
+Export-Package: *

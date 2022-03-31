@@ -3,9 +3,12 @@
 
 -includeresource: resources
 
+category: ccc/Gecko OSGi Standard Templates
+
 Provide-Capability: \
 	${gecko-base},\
-	${workspace-template-geckoprojects}
+	${workspace-template-geckoprojects},\
+	${project-template-osgi-lib}
 
 gecko-base:\
     bnd.library;\
@@ -22,6 +25,18 @@ workspace-template-geckoprojects:\
 		icon					= "${icondata}"; \
 		help					= help.xml;\
 		metaType				= help-metatype.xml
+		
+project-template-osgi-lib:\
+	org.bndtools.template; org.bndtools.template=project;\
+		name=Library Repacking;\
+		category=${category};\
+		ranking:Double=1010;\
+		dir=templates/osgi-lib;\
+		icon="${icondata}"; \
+		help=osgi-lib-help.xml;\
+		engine=mustache;\
+		metaType=osgi-lib-metatype.xml
+
         
 icondata: data:image/gif;base64,${base64;icons/gecko.ico}
 
