@@ -3,8 +3,6 @@
 
 -includeresource: resources
 
-category: ccc/Gecko OSGi Standard Templates
-
 Provide-Capability: \
 	${gecko-base},\
 	${workspace-template-geckoprojects},\
@@ -13,7 +11,7 @@ Provide-Capability: \
 
 gecko-base:\
     bnd.library;\
-        bnd.library     		= gecko-dimc; \
+        bnd.library     		= geckoDIMC; \
         path            		= library
 
 workspace-template-geckoprojects:\
@@ -29,7 +27,7 @@ workspace-template-geckoprojects:\
 		
 project-template-osgi-lib:\
 	org.bndtools.template; org.bndtools.template=project;\
-		name=Library Repacking;\
+		name=Library Repackaging;\
 		category=${category};\
 		ranking:Double=1010;\
 		dir=project/osgi-lib;\
