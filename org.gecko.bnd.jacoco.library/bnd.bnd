@@ -8,7 +8,7 @@ Provide-Capability: \
 
 gecko-base:\
     bnd.library;\
-        bnd.library     = gecko-jacoco; \
+        bnd.library     = geckoJacoco; \
         path            = template
         
 Bundle-Name: Bnd library for Jacoco

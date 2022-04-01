@@ -9,11 +9,9 @@ Provide-Capability: \
 
 gecko-base:\
     bnd.library;\
-        bnd.library     		= gecko-osgitest; \
+        bnd.library     		= geckoOSGi-Test; \
         path            		= library
  
-category: bbb/OSGi Standard Templates
-
 project-template-osgi-test:\
 	org.bndtools.template;\
 		org.bndtools.template	= project;\
