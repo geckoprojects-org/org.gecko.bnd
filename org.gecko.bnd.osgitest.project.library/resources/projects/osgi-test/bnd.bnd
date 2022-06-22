@@ -3,13 +3,21 @@ javac.source: $javaLevel$
 javac.target: $javaLevel$
 $endif$
 
-# enables JUnit 5 support for this project
--enable-junit5: true
+# enables OSGi Test / JUnit 5 support for this project
+-library: enableOSGi-Test
 
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -buildpath: \
 	org.osgi.framework,\
 	org.osgi.service.cm
+	
+-runrequires: \
+	bnd.identity;id='org.apache.felix.configadmin',\
+	bnd.identity;id='$projectName$'
+	
+-runbundles.junit5: \
+	org.apache.felix.configadmin;version=latest,\
+	$projectName$;version=snapshot
 	
 Private-Package: $basePackageName$
 

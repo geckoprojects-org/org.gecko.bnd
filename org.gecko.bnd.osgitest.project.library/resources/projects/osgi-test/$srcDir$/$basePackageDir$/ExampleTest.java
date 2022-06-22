@@ -23,6 +23,9 @@ import org.osgi.test.common.annotation.InjectService;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
+//import org.mockito.Mock;
+//import org.mockito.junit.jupiter.MockitoExtension;
+
 /**
  * See documentation here: 
  * 	https://github.com/osgi/osgi-test
@@ -31,7 +34,11 @@ import org.osgi.test.junit5.service.ServiceExtension;
  */
 @ExtendWith(BundleContextExtension.class)
 @ExtendWith(ServiceExtension.class)
+//@ExtendWith(MockitoExtension.class)
 public class ExampleTest {
+	
+//	@Mock
+//	TestInterface test;
 	
 	@BeforeEach
 	public void before(@InjectBundleContext BundleContext ctx) {

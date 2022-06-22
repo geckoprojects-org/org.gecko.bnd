@@ -4,26 +4,12 @@
 -includeresource: resources
 
 Provide-Capability: \
-	${gecko-base},\
-	${project-template-osgi-test}
+	${gecko-base}
 
 gecko-base:\
     bnd.library;\
         bnd.library     		= geckoOSGi-Test; \
         path            		= library
  
-project-template-osgi-test:\
-	org.bndtools.template;\
-		org.bndtools.template	= project;\
-		name					= OSGi-Test Fragment;\
-		category				= ${category};\
-		ranking:Double			= 998;\
-		dir						= projects/osgi-test;\
-		icon					= "${integration-test-icon}";\
-		help					= osgi-test-help.xml
-       
-Bundle-Name: Bnd library for OSGi-Test support
-Bundle-Description: Gecko OSGi tests with assertJ, Mockito and JUnit5 support as bndtools library
-
-dataurl: data:image/gif;base64
-integration-test-icon: ${dataurl},${base64;icons/junit.gif}
+Bundle-Name: Bnd library for JUnit5 and OSGi-Test support
+Bundle-Description: Gecko OSGi and Junit5 Tests Library

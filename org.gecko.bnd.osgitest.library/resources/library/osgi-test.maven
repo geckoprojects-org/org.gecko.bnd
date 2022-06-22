@@ -31,3 +31,6 @@ org.hamcrest:hamcrest:2.2
 org.apiguardian:apiguardian-api:1.1.2
 org.objenesis:objenesis:3.2
 biz.aQute.bnd:biz.aQute.tester.junit-platform:6.2.0
+
+# Bring the OSGi test project library and template with this dependency
+org.geckoprojects.bnd:org.gecko.bnd.osgitest.project.library:${base-version}

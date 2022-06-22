@@ -5,7 +5,7 @@ javac.target: 11
     aQute.bnd.repository.maven.provider.MavenBndRepository; \
         snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/"; \
         releaseUrl=https://repo.maven.apache.org/maven2/; \
-        index=${.}/central.mvn; \
+        index=${.}/central.maven; \
         readOnly=true; \
         poll.time=-1; \
         name="Central"
@@ -24,7 +24,9 @@ javac.target: 11
         
 -groupid: org.geckoprojects.bnd
 
-base-version: 1.1.2.SNAPSHOT
+-library: geckoOSGi-Test
+
+base-version: 1.2.0.SNAPSHOT
 github-project: org.gecko.bnd
 category: ccc/Gecko OSGi Standard Templates
 
