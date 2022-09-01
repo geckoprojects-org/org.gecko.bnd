@@ -13,10 +13,10 @@ You simple have to include the Maven Dependency in your setup:
 <dependency>
 	<groupId>org.geckoprojects.bnd</groupId>
 	<artifactId>org.gecko.bnd.osgittest.library</artifactId>
-	<version>1.0.x</version>
+	<version>1.2.x</version>
 </dependency>
 
-org.geckoprojects.bnd:org.gecko.bnd.osgittest.library:1.0.x
+org.geckoprojects.bnd:org.gecko.bnd.osgittest.library:1.2.x
 ```
 ## Library geckoOSGi-Test
 
@@ -24,25 +24,32 @@ Calling the instruction:
 
 **-library: geckoOSGi-Test**
 
-will enable the setup automatically in Bnd.
+will enable the dependency setup automatically in Bnd.
 
-A new repository will appear, that includes the OSGi-Test dependencies. In addition to that some pre-configurations are done to ease the use on project level.
+A new repository will appear, that includes the OSGi-Test dependencies. In addition to that, some pre-configurations are done regarding setting a general test path for projects.
 
 ### Default behavior
 
-To test a bundle, no matter if simple unit-test or integration test, you have just to create a new project, with the same same name like the bundle you want to test, but with the extension **.tests**.
+For ordinary unit testing in your project. You do not to do anything. JUnit5 testing is already configured.
 
-Example:
+This library brings also the dependency *org.gecko.bnd.osgittest.project.library*. This is also a library on top and contains project templates for JUnit5 / OSGi-Test enabled integration test projects.
 
-You want to test **org.foo.bar**, you have to create a new project called **org.foo.bar.tests**.
 
-In the bnd file of **org.foo.bar.tests** you have just to set **-enable-junit5: true**.
+## OSGi-Test Project Template
 
-This will make you test bundle a fragment for host **org.foo.bar**. So you see the whole classpath. In addition to that, the build path will be set with all needed dependencies to start testing.
+This project template creates an integration test project for a given bundle. It contains support for the OSGi-Test project and JUnit5 / Jupiter. It contains the configuration to run the integration tests with gradle, based on a bndrun-setup. 
 
-## Project Templates
-### OSGi Test Fragment
-This project template creates a test fragment for a given bundle. this template works only together with the activates library **-library: geckoOSGi-Test** in you workspace configuration like the *build.bnd*.
+For that it brings a *build.gradle* file that, activates that. Otherwise the task *testOSGi* will look into the *bnd.bnd* and try to run that.
+
+this template works only together with the activated library **-library: enableOSGi-Test** in your project configuration set in the *bnd.bnd*.
+
 Refering to the default behavior section of the chapter above, this template creates a ready to run project. 
 
-You only have to provide the correct project name: `<project.you.want.to.test>.tests`
+## Gradle OSGi-Test Workspace Template
+
+To enable JUnit5 and OSGi-Test testing on projects that are not based on the **geckoDIMC** library workspace, you have to enable JUnit5 testing for sub-projects in gradle. For that you need to modify the *build.gradle* in you workspace:
+
+```
+
+
+

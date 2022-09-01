@@ -8,14 +8,17 @@ You simple have to include the Maven Dependency in your setup:
 <dependency>
 	<groupId>org.geckoprojects.bnd</groupId>
 	<artifactId>org.gecko.bnd.dimc.library</artifactId>
-	<version>1.0.x</version>
+	<version>1.2.x</version>
 </dependency>
 
-org.geckoprojects.bnd:org.gecko.bnd.dimc.library:1.0.x
+org.geckoprojects.bnd:org.gecko.bnd.dimc.library:1.2.x
 ```
 
 ## Workspace Template
-This project contains a workspace extension to Bndworkspace that addes a special *build.gradle*, that can be used with OSGi Tests. It deactivates the original *Gradle* task **testOSGi** and replaces it by the new **itest** task. This is then used for the new OSGi Tests with Junit5.
+This project contains a workspace extension to Bndworkspace that adds a special *build.gradle*, that can be used with the **OSGi-Test** project. 
+
+It enabled JUnit5 / Jupiter unit testing for all projects.
+
 The setup also contains some files for the github actions and the Jenkinsfile for the Data In Motion Jenkins. Sonarcube checks and License header checks are also activated.
 
 ## Project Templates
@@ -68,4 +71,8 @@ This will release all artifacts into the provided folder.
 This setup also contains a configuration for automatically releasing snapshot to Maven Central Snapshots and Releases to the Staging repositories.
 
 This action can only be triggered from our internal Jenkins instance.
+
+### Baselining 
+
+Baselining is pre-configured for the Data In Motion release repository. Baselining can then be activated for each project, if wanted.
 
