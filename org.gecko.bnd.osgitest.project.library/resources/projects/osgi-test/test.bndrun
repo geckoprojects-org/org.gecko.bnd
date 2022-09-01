@@ -1,10 +1,10 @@
-
--runbundles.junit5: \
-	\${test.runbundles}
+-library: enableOSGi-Test
 
 -runrequires: \
-	bnd.identity;id='org.apache.felix.configadmin',\
-	bnd.identity;id='$projectName$'
+	bnd.identity;id='{{projectName}}'
+	
+-runbundles.test: \
+	{{projectName}};version=snapshot
 
 #-runfw: org.apache.felix.framework
 

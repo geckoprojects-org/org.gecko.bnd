@@ -3,9 +3,9 @@
 #	DIMC Github-Configuration - gecko-dimc
 #	Jacoco Support - gecko-jacoco
 -library: \
-	gecko-osgitest,\
-	gecko-dimc,\
-	gecko-jacoco
+	geckoDIMC,\
+	geckoOSGi-Test,\
+	geckoJacoco
 
 # Needed because we enabled library 'gecko-dimc' 	
 github-project: €€project-symbolic-name€€

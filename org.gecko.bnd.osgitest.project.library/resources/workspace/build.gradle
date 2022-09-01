@@ -1,0 +1,6 @@
+// Available to customize the build
+subprojects {
+  tasks.withType(Test) {
+    useJUnitPlatform()
+  }
+}

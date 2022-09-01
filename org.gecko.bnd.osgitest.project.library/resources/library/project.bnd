@@ -1,41 +1,11 @@
--tester: biz.aQute.tester.junit-platform
+Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE}
 
--buildpath.junit5: ${test-buildpath}
+-buildpath.junit5: ${test-path}
 
-test-buildpath: \
-	${junit-buildpath},\
-	org.osgi.test.assertj.framework,\
-	org.osgi.test.assertj.promise,\
-	org.osgi.test.common,\
-	org.osgi.test.junit5,\
-	org.osgi.test.junit5.cm
-
--runproperties.junit5: ${test-runproperties}
-
-test-runproperties: \
-	tester.trace=true,\
-	tester.continuous=true
-
--runbundles.junit5: \
-	${test-runbundles}
-
-test-runbundles: \
-	biz.aQute.tester.junit-platform;version='[6.2.0,7)',\
-	org.opentest4j;version='[1.2.0,1.2.1)',\
-	org.osgi.test.common;version='[1.1.0,1.1.1)',\
-	org.osgi.test.junit5;version='[1.1.0,1.1.1)',\
-	junit-jupiter-api;version='[5.8.0,6)',\
-	junit-jupiter-params;version='[5.8.0,6)',\
-	junit-jupiter-engine;version='[5.8.0,6)',\
-	junit-platform-commons;version='[1.8.0,2)',\
-	junit-platform-engine;version='[1.8.0,2)',\
-	junit-platform-launcher;version='[1.8.0,2)',\
-	net.bytebuddy.byte-buddy;version='[1.12.8,1.12.9)',\
-	net.bytebuddy.byte-buddy-agent;version='[1.12.8,1.12.9)',\
-	org.mockito.junit-jupiter;version='[4.4.0,4.4.1)',\
-	org.mockito.mockito-core;version='[4.4.0,4.4.1)',\
-	org.objenesis;version='[3.2.0,3.2.1)'
-
-
-## BndPomRepository could load g_a_v_c sind 6.0.0
--require-bnd: "(version>=6.2.0)"
+test-path: \
+	${junit},\
+	${mockito},\
+	org.mockito.junit-jupiter;version=latest,\
+	${osgitest}
+	
+-require-bnd: "(version>=6.3.1)"

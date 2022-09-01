@@ -3,8 +3,11 @@
 
 -includeresource: resources
 
+osgi-test-category: OSGi-Test / JUnit5 Jupiter
+
 Provide-Capability: \
 	${gecko-base},\
+	${workspace-template-osgi-test},\
 	${project-template-osgi-test}
 
 gecko-base:\
@@ -15,15 +18,26 @@ gecko-base:\
 project-template-osgi-test:\
 	org.bndtools.template;\
 		org.bndtools.template	= project;\
-		name					= Junit5 Integration Test Project;\
-		category				= ${category};\
+		name					= OSGi-Test/JUnit5 Integration Test Project;\
+		category				= ${osgi-test-category};\
 		ranking:Double			= 998;\
+		engine					= mustache;\
 		dir						= projects/osgi-test;\
 		icon					= "${integration-test-icon}";\
 		help					= osgi-test-help.xml
+
+workspace-template-osgi-test:\
+	org.bndtools.template;\
+		org.bndtools.template	= workspace; \
+		engine					= mustache; \
+		name					= OSGi-Test/JUnit5 Workspace Extension; \
+		category				= ${osgi-test-category}; \
+		dir						= workspace; \
+		icon					= "${integration-test-icon}";\
+		help					= wse-osgi-test-help.xml
        
-Bundle-Name: Bnd project library for OSGi-Test and JUnit5 support
-Bundle-Description: Gecko OSGi tests with assertJ, Mockito and JUnit5 support as bndtools library
+Bundle-Name: Bnd project/workspace library for OSGi-Test and JUnit5 support
+Bundle-Description: Gecko OSGi tests with AssertJ, Mockito and JUnit5 Jupiter support as bndtools library
 
 dataurl: data:image/gif;base64
 integration-test-icon: ${dataurl},${base64;icons/junit.gif}

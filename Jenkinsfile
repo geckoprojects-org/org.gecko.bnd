@@ -15,7 +15,10 @@ pipeline  {
             }
             steps {
                 echo "I am building on ${env.BRANCH_NAME}"
-                sh "./gradlew clean build itest release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/org.geckoprojects.bnd.template --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/org.geckoprojects.bnd.template --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "mkdir -p $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template"
+                sh "rm -rf $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template/*"
+                sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template"
             }
         }
         stage('Snapshot branch release') {

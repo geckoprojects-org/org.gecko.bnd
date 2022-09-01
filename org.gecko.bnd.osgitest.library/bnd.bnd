@@ -1,8 +1,11 @@
+-include: https://raw.githubusercontent.com/osgi/osgi-test/main/examples/osgi-test-example-bndworkspace/cnf/ext/test.bnd
+
 -resourceonly: true
 -sources: false
 
--includeresource: resources
-
+-includeresource: resources,\
+	{library/osgi-test.maven=resources/library/osgi-test.maven}
+	
 Provide-Capability: \
 	${gecko-base}
 
@@ -12,4 +15,4 @@ gecko-base:\
         path            		= library
  
 Bundle-Name: Bnd library for JUnit5 and OSGi-Test support
-Bundle-Description: Gecko OSGi and Junit5 Tests Library
+Bundle-Description: Gecko JUnit5 and OSGi-Test Library
