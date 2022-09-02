@@ -25,8 +25,11 @@ javac.target: 11
 -groupid: org.geckoprojects.bnd
 
 base-version: 1.2.0.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${base-version}}
+
 github-project: org.gecko.bnd
 category: ccc/Gecko OSGi Standard Templates
+osgi-test-category: ccc/OSGi-Test & JUnit5 Jupiter
 
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
 releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS}

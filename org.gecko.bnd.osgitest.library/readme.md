@@ -1,4 +1,4 @@
-# Bnd OSGi-Test Support
+# Bnd JUnit5 Jupiter and OSGi-Test Support
 
 This library brings a default setup to use OSGi Test in Bndtools.
 
@@ -26,30 +26,24 @@ Calling the instruction:
 
 will enable the dependency setup automatically in Bnd.
 
-A new repository will appear, that includes the OSGi-Test dependencies. In addition to that, some pre-configurations are done regarding setting a general test path for projects.
+A new repository will appear, that includes the JUnit5 Jupiter and OSGi-Test dependencies. In addition to that, some pre-configurations are done regarding setting a general test-path for Bnd projects.
 
 ### Default behavior
 
-For ordinary unit testing in your project. You do not to do anything. JUnit5 testing is already configured.
+For ordinary unit testing in your project. You do not to do anything. JUnit5 testing is already configured, because the *-testpath* is configured by the library.
 
 This library brings also the dependency *org.gecko.bnd.osgittest.project.library*. This is also a library on top and contains project templates for JUnit5 / OSGi-Test enabled integration test projects.
 
-
-## OSGi-Test Project Template
-
-This project template creates an integration test project for a given bundle. It contains support for the OSGi-Test project and JUnit5 / Jupiter. It contains the configuration to run the integration tests with gradle, based on a bndrun-setup. 
-
-For that it brings a *build.gradle* file that, activates that. Otherwise the task *testOSGi* will look into the *bnd.bnd* and try to run that.
-
-this template works only together with the activated library **-library: enableOSGi-Test** in your project configuration set in the *bnd.bnd*.
-
-Refering to the default behavior section of the chapter above, this template creates a ready to run project. 
-
 ## Gradle OSGi-Test Workspace Template
 
-To enable JUnit5 and OSGi-Test testing on projects that are not based on the **geckoDIMC** library workspace, you have to enable JUnit5 testing for sub-projects in gradle. For that you need to modify the *build.gradle* in you workspace:
+To enable JUnit5 and OSGi-Test testing on projects that are not based on the **geckoDIMC** library workspace, you have to enable JUnit5 testing for sub-projects in Gradle. For that you need to modify the *build.gradle* in your workspace:
 
 ```
+subprojects {
+  tasks.withType(Test) {
+    useJUnitPlatform()
+  }
+}
+```
 
-
-
+This workspace template will do that for you. Please note, that it maybe possible, that you already have something in the *build.gradle* file, that would then be overwritten. In that case, you should not apply this template.

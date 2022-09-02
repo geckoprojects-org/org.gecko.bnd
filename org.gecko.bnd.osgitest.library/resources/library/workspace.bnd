@@ -3,7 +3,7 @@
 -plugin.junit5: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
 		releaseUrl			= "https://repo.maven.apache.org/maven2/"; \
-		snapshotUrl			= "https://oss.sonatype.org/content/repositories/snapshots/";\
+		snapshotUrl			= "https://oss.sonatype.org/content/repositories/snapshots/,https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/";\
 		index            	= "${.}/osgi-test.maven" ;\
 		poll.time           = -1;\
 		readOnly            = true;\

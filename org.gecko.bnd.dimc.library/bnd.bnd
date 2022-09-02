@@ -1,7 +1,8 @@
 -resourceonly: true
 -sources: false
 
--includeresource: resources
+-includeresource: resources,\
+	{workspace/cnf/central.mvn=resources/workspace/cnf/central.mvn}
 
 Provide-Capability: \
 	${gecko-base},\

@@ -7,12 +7,26 @@
 	{library/osgi-test.maven=resources/library/osgi-test.maven}
 	
 Provide-Capability: \
-	${gecko-base}
+	${gecko-base},\
+	${workspace-template-osgi-test}
 
 gecko-base:\
     bnd.library;\
         bnd.library     		= geckoOSGi-Test; \
         path            		= library
+
+workspace-template-osgi-test:\
+	org.bndtools.template;\
+		org.bndtools.template	= workspace; \
+		engine					= mustache; \
+		name					= OSGi-Test/JUnit5 Workspace Extension; \
+		category				= ${osgi-test-category}; \
+		dir						= workspace; \
+		icon					= "${junit-icon}";\
+		help					= wse-osgi-test-help.xml
  
 Bundle-Name: Bnd library for JUnit5 and OSGi-Test support
 Bundle-Description: Gecko JUnit5 and OSGi-Test Library
+
+dataurl: data:image/gif;base64
+junit-icon: ${dataurl},${base64;icons/junit.gif}
