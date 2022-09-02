@@ -31,6 +31,9 @@ pipeline  {
                 sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/org.geckoprojects.bnd.template"
                 sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/org.geckoprojects.bnd.template/*"
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/org.geckoprojects.bnd.template"
+                sh "mkdir -p $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template"
+                sh "rm -rf $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template/*"
+                sh "cp -r cnf/ws-release/* $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template"
             }
         }
     }

@@ -9,6 +9,11 @@
 		name		= Release; \
 		pretty		= true; \
 		local		= ${build}/release
+-plugin.Workspace: \
+	aQute.bnd.deployer.repository.LocalIndexedRepo; \
+		name		= Release Workspace; \
+		pretty		= true; \
+		local		= ${build}/ws-release
 
 # Includes sources from bundle
 -sources: true
