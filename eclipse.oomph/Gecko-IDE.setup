@@ -1734,20 +1734,6 @@
       <requirement
           name="org.eclipse.jdt.feature.group"/>
       <requirement
-          name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.context_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.ide_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.java_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.pde_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn_feature.feature.group"/>
-      <requirement
           name="org.eclipse.ocl.all.sdk.feature.group"/>
       <requirement
           name="org.eclipse.oomph.setup.feature.group"/>
@@ -1860,7 +1846,7 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/bndtools.core/templateRepoUriList"
-          value="https://devel.data-in-motion.biz/repository/gecko/snapshot/org.geckoprojects.bnd.template/index.xml"/>
+          value="https://devel.data-in-motion.biz/public/repository/gecko/snapshot/geckoBndTemplates/index.xml https://devel.data-in-motion.biz/repository/gecko/bndtemplates/org.geckoprojects.bnd.template/index.xml"/>
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates"
