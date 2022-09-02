@@ -1,10 +1,10 @@
 # org.gecko.bnd
 
-This project contains **Bndtools Library** definitions.
+This project contains **Bndtools Library** definitions and an Eclipse IDE setup.
 
 You can take a look here about bnd libraries:
 
-https://bnd.bndtools.org/instructions/library.html
+[https://bnd.bndtools.org/instructions/library.html](https://bnd.bndtools.org/instructions/library.html)
 
 Beside that, some projects also contain *Bndtools* workspace and/or project templates.
 
@@ -41,4 +41,8 @@ This project contains:
 ## org.gecko.bnd.jacoco.library
 
 * Library **geckoJacoco** - Enables Jacoco for your OSGi Project. Its adds the agent to the setup
+
+## Eclipse IDE Oomph Setup
+
+Please refer to [Geckoproject Eclipse Oomph Setup Readme](eclipse.oomph/readme.md).
 
