@@ -9,11 +9,15 @@
 		name		= Release; \
 		pretty		= true; \
 		local		= ${build}/release
--plugin.Workspace: \
+		
+# Special release repository, used just to release the dimc.library into
+# This is then used to let Eclipse  with bndtools refer to this repository, which then contains 
+# the Geckoproject workspace template		
+-plugin.Release-Workspace: \
 	aQute.bnd.deployer.repository.LocalIndexedRepo; \
 		name		= Release Workspace; \
 		pretty		= true; \
-		local		= ${build}/ws-release
+		local		= ${build}/release-ws
 
 # Includes sources from bundle
 -sources: true
