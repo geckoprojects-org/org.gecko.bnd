@@ -1784,21 +1784,20 @@
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
-        id="installation.2022-06"
-        name="installation.name"
+        name="gecko.installation.name"
         label="Installation Name"/>
     <setupTask
         xsi:type="setup:ResourceCreationTask"
         id="gnome.desktop.2022-06"
         filter="(osgi.os=linux)"
-        targetURL="file://${user.home}/.local/share/applications/${installation.name}.desktop">
+        targetURL="file://${user.home}/.local/share/applications/${gecko.installation.name}.desktop">
       <content>
 
         [Desktop Entry]
         Encoding=UTF-8
-        Version=2021-12
+        Version=2022-06
         Type=Application
-        Name=${installation.name}
+        Name=${gecko.installation.name}
         Terminal=false
         Icon=${installation.location}/eclipse/icon.xpm
         Path=${installation.location}/eclipse
@@ -1879,8 +1878,7 @@
     </setupTask>
     <setupTask
         xsi:type="setup:VariableTask"
-        id="workspace.2022-06"
-        name="workspace.name"
+        name="gecko.workspace.name"
         defaultValue="ws"
         label="Workspace Name"/>
     <setupTask
@@ -1891,7 +1889,7 @@
           xsi:type="setup:EclipseIniTask"
           id="eclipse-ini.2022-06"
           option="-data"
-          value="./../${workspace.name}">
+          value="./../${gecko.workspace.name}">
         <description>Set workspace path</description>
       </setupTask>
       <setupTask

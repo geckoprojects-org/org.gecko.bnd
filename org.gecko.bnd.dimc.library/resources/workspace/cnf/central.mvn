@@ -35,6 +35,7 @@ org.apache.felix:org.apache.felix.inventory:1.1.0
 org.apache.felix:org.apache.felix.log:1.2.6
 org.apache.felix:org.apache.felix.scr:2.2.2
 org.apache.felix:org.apache.felix.webconsole:4.8.2
+org.apache.aries.spifly:org.apache.aries.spifly.dynamic.framework.extension:1.3.5
 
 org.apache.servicemix.bundles:org.apache.servicemix.bundles.junit:4.13.2_1
 org.apache.servicemix.specs:org.apache.servicemix.specs.jaxws-api-2.2:2.9.0
@@ -69,12 +70,12 @@ org.osgi:org.osgi.service.resolver:1.1.1
 org.osgi:org.osgi.service.rest:1.0.0
 org.osgi:org.osgi.service.serviceloader:1.0.0
 org.osgi:org.osgi.service.url:1.0.1
-org.osgi:org.osgi.util.measurement:1.0.2
-org.osgi:org.osgi.util.position:1.0.1
-org.osgi:org.osgi.util.promise:1.0.0
-org.osgi:org.osgi.util.tracker:1.5.3
-org.osgi:org.osgi.util.xml:1.0.2
 org.osgi:org.osgi.util.converter:1.0.9
+org.osgi:org.osgi.util.function:1.2.0
+org.osgi:org.osgi.util.promise:1.2.0
+org.osgi:org.osgi.util.pushstream:1.0.2
+org.osgi:org.osgi.util.tracker:1.5.4
+org.osgi:org.osgi.util.xml:1.0.2
 org.osgi:org.osgi.annotation.bundle:2.0.0
 org.osgi:org.osgi.framework:1.9.0
 org.osgi:org.osgi.service.cdi:1.0.1
@@ -86,9 +87,12 @@ org.osgi:org.osgi.service.jdbc:1.0.1
 org.osgi:org.osgi.service.metatype:1.4.1
 org.osgi:org.osgi.service.metatype.annotations:1.4.1
 org.osgi:org.osgi.service.useradmin:1.1.1
+org.osgi:org.osgi.util.converter:1.0.9
 org.osgi:org.osgi.util.function:1.2.0
 org.osgi:org.osgi.util.promise:1.2.0
 org.osgi:org.osgi.util.pushstream:1.0.2
+org.osgi:org.osgi.util.tracker:1.5.4
+org.osgi:org.osgi.util.xml:1.0.2
 org.osgi:osgi.annotation:8.0.0
 org.osgi:osgi.core:8.0.0
 org.osgi:osgi.annotation:7.0.0
@@ -112,7 +116,7 @@ org.bouncycastle:bctls-jdk15on:1.70
 org.bouncycastle:bcutil-jdk15on:1.70
 biz.aQute.bnd:biz.aQute.bnd.annotation:6.3.1
 biz.aQute:biz.aQute.gogo.commands.provider:1.9.0
-org.apache.aries.spifly:org.apache.aries.spifly.dynamic.bundle:1.3.5
+org.apache.aries.spifly:org.apache.aries.spifly.dynamic.framework.extension:1.3.5
 org.slf4j:slf4j-simple:1.7.36
 org.slf4j:slf4j-api:1.7.36
 org.yaml:snakeyaml:1.31

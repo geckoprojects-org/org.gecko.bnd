@@ -10,6 +10,7 @@
 # Needed because we enabled library 'gecko-dimc' 	
 github-project: €€project-symbolic-name€€
 base-version: 1.0.0.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${base-version}}
 
 # Maven Central Group-Id
 -groupid: €€project-symbolic-name€€
