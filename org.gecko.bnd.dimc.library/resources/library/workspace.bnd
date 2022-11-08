@@ -53,7 +53,7 @@ project-version: ${base-version}.SNAPSHOT
 		locations=https://devel.data-in-motion.biz/repository/gecko/release/${github-project}/index.xml;\
 		max.stale=-1;\
 		name=Baseline;\
-		cache=${build}/cache/{github-project}
+		cache=${build}/cache/${github-project}
 -baselinerepo: Baseline
 #-baseline: *
 
