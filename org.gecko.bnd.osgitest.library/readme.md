@@ -36,9 +36,14 @@ This library brings also the dependency *org.gecko.bnd.osgittest.project.library
 
 ## Gradle OSGi-Test Workspace Template
 
-To enable JUnit5 and OSGi-Test testing on projects that are not based on the **geckoDIMC** library workspace, you have to enable JUnit5 testing for sub-projects in Gradle. For that you need to modify the *build.gradle* in your workspace:
+To enable JUnit5 and OSGi-Test testing on projects that are not based on the **geckoDIMC** library workspace, you have to enable JUnit5 testing for sub-projects in Gradle. The repositories definition is in any case needed, if you run Jacoco in a newer version of Gradle (> 7.5.1), otherwise it cannot fetch the JacocoAnt dpendencies
+For that you need to modify the *build.gradle* in your workspace:
 
 ```
+repositories {
+    mavenCentral()
+}
+
 subprojects {
   tasks.withType(Test) {
     useJUnitPlatform()
