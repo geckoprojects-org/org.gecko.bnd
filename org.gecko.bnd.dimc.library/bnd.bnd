@@ -54,4 +54,4 @@ icondata: data:image/gif;base64,${base64;icons/gecko.ico}
 Bundle-Name: Bnd library for a Data In Motion setup
 Bundle-Description: Gecko DIM setup support as bndtools Library
 
--releaserepo: Release, DIM_Release, Release Workspace
+-releaserepo: Release, DIM_Release, Release-Workspace
