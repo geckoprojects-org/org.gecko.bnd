@@ -1,29 +1,32 @@
+-include: https://raw.githubusercontent.com/osgi/osgi-test/main/examples/osgi-test-example-bndworkspace/cnf/ext/test.bnd
+
 -resourceonly: true
 -sources: false
 
--includeresource: resources
-
+-includeresource: resources,\
+	{library/osgi-test.maven=resources/library/osgi-test.maven}
+	
 Provide-Capability: \
 	${gecko-base},\
-	${project-template-osgi-test}
+	${workspace-template-osgi-test}
 
 gecko-base:\
     bnd.library;\
         bnd.library     		= geckoOSGi-Test; \
         path            		= library
- 
-project-template-osgi-test:\
+
+workspace-template-osgi-test:\
 	org.bndtools.template;\
-		org.bndtools.template	= project;\
-		name					= OSGi-Test Fragment;\
-		category				= ${category};\
-		ranking:Double			= 998;\
-		dir						= projects/osgi-test;\
-		icon					= "${integration-test-icon}";\
-		help					= osgi-test-help.xml
-       
-Bundle-Name: Bnd library for OSGi-Test support
-Bundle-Description: Gecko OSGi tests with assertJ, Mockito and JUnit5 support as bndtools library
+		org.bndtools.template	= workspace; \
+		engine					= mustache; \
+		name					= OSGi-Test/JUnit5 Workspace Extension; \
+		category				= ${osgi-test-category}; \
+		dir						= workspace; \
+		icon					= "${junit-icon}";\
+		help					= wse-osgi-test-help.xml
+ 
+Bundle-Name: Bnd library for JUnit5 and OSGi-Test support
+Bundle-Description: Gecko JUnit5 and OSGi-Test Library
 
 dataurl: data:image/gif;base64
-integration-test-icon: ${dataurl},${base64;icons/junit.gif}
+junit-icon: ${dataurl},${base64;icons/junit.gif}

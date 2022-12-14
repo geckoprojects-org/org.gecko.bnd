@@ -1,0 +1,17 @@
+-tester: biz.aQute.tester.junit-platform
+
+-runproperties.junit5: ${test-runproperties}
+
+test-runproperties: \
+	tester.trace=true
+
+-runbundles.junit5: \
+	${junit},\
+	${mockito},\
+	${osgitest},\
+	org.mockito.junit-jupiter;version=latest,\
+	net.bytebuddy.byte-buddy-agent;version=latest,\
+	biz.aQute.tester.junit-platform;version=latest,\
+	junit-platform-launcher;version=latest
+
+-require-bnd: "(version>=6.3.1)"

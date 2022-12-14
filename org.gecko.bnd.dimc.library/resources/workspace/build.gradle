@@ -4,15 +4,11 @@ plugins {
   id 'java'
 }
 
-// It is always good to give gradle the possibility to have a repository to download dpendencies
-repositories {
-    mavenCentral()
-}
-
 // Allow gradle to enable JUnit support in submodules
 subprojects {
-   apply plugin : 'java'
-   test.useJUnitPlatform()
+  tasks.withType(Test) {
+    useJUnitPlatform()
+  }
 }
 
 // Sonar setup
@@ -27,41 +23,8 @@ sonarqube {
   }
 }
 
-tasks.named('wrapper') {
-  jarFile = rootProject.file('.gradle-wrapper/gradle-wrapper.jar')
-}
-
-
-// Disable bnd plugin built-in task 'testOSGi' and register custom task for testing
-gradle.startParameter.excludedTaskNames += "testOSGi"
-
-// Enable itest task instead for using OSGi Tests and JUnit5
-tasks.register('itest'){
-  subprojects.each { sp ->
-    sp.tasks.each { t -> 
-      if(t.name ==~ "resolve\\.(test|export)(.*)?"){
-        dependsOn t
-      }
-    }
-  }
-  subprojects.each { sp ->
-    sp.tasks.each { t -> 
-      if(t.name ==~ "testrun\\.test(.*)?"){
-        dependsOn t
-      }
-    }
-  }
-  subprojects.each { sp ->
-    sp.tasks.each { t -> 
-      if(t.name ==~ "export\\.export(.*)?"){
-        dependsOn t
-      }
-    }
-  }
-}
-
 task codeCoverageReport(type: JacocoReport) {
-    dependsOn itest
+    dependsOn(test)
     // Gather execution data from all subprojects
     executionData fileTree(project.rootDir.absolutePath).include("**/**/jacoco.exec")
 

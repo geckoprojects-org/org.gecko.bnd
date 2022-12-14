@@ -3,13 +3,14 @@
 #	DIMC Github-Configuration - gecko-dimc
 #	Jacoco Support - gecko-jacoco
 -library: \
-	gecko-osgitest,\
-	gecko-dimc,\
-	gecko-jacoco
+	geckoDIMC,\
+	geckoOSGi-Test,\
+	geckoJacoco
 
 # Needed because we enabled library 'gecko-dimc' 	
 github-project: €€project-symbolic-name€€
 base-version: 1.0.0.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${base-version}}
 
 # Maven Central Group-Id
 -groupid: €€project-symbolic-name€€
@@ -21,7 +22,7 @@ javac.target: 11
 
 -plugin.Central: \
     aQute.bnd.repository.maven.provider.MavenBndRepository; \
-        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/"; \
+        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/,https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/"; \
         releaseUrl=https://repo.maven.apache.org/maven2/; \
         index=${.}/central.mvn; \
         readOnly=true; \

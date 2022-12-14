@@ -1,0 +1,13 @@
+// Available to customize the build
+
+// Needed to run Jacoco properly
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+// Needed to run JUnit5 Jupiter as JUnit test in sub-projects
+subprojects {
+  tasks.withType(Test) {
+    useJUnitPlatform()
+  }
+}

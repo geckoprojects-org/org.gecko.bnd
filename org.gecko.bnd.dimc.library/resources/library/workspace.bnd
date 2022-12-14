@@ -2,7 +2,7 @@ Bundle-DocURL: https://github.com/geckoprojects-org/${github-project}
 Bundle-SCM: url=https://github.com/geckoprojects-org/${github-project}, \
 	connection=scm:git:https://github.com/geckoprojects-org/${github-project}.git, \
 	developerConnection=scm:git:git@github.com:geckoprojects-org/${github-project}.git
-Bundle-Version: ${base-version}
+Bundle-Version: ${project-version}
 Bundle-License: Eclipse Public License 2.0
 Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
 Bundle-Vendor: Data In Motion Consuling GmbH
@@ -26,6 +26,8 @@ Bundle-Developers: \
         organizationUrl="https://www.datainmotion.de"; \
         roles="developer,architect"
 
+project-version: ${base-version}.SNAPSHOT
+
 # Includes sources from bundle
 -sources: true
 
@@ -46,12 +48,34 @@ Bundle-Developers: \
 		snapshotUrl=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
 		releaseUrl=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
 		name='DIM_Release'
-#Local Nexus 
--plugin.Release: \
-	aQute.bnd.deployer.repository.LocalIndexedRepo; \
-		name		= Release; \
-		pretty		= true; \
-		local		= ${build}/release
+-plugin.baseline:\
+	aQute.bnd.repository.osgi.OSGiRepository;\
+		locations=https://devel.data-in-motion.biz/repository/gecko/release/${github-project}/index.xml;\
+		max.stale=-1;\
+		name=Baseline;\
+		cache=${build}/cache/${github-project}
+-baselinerepo: Baseline
+#-baseline: *
+
+# Ignore files for baselining
+-diffignore: *.xml,\
+	*/pom.properties,\
+	 Git-SHA,\
+	 Bundle-Vendor,\
+	 Bundle-License,\
+	 Bundle-DocURL,\
+	 Bundle-SCM,\
+	 Bundle-Developers,\
+	 Bundle-Copyright,\
+	 Bundle-ContactAddress,\
+	 META-INF/maven/*,\
+	 OSGI-OPT/*
+	
+# Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
+releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS}
+
+# If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
+-maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
 
 -maven-release: pom
 -pom: true

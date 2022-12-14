@@ -5,7 +5,7 @@ javac.target: 11
     aQute.bnd.repository.maven.provider.MavenBndRepository; \
         snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/"; \
         releaseUrl=https://repo.maven.apache.org/maven2/; \
-        index=${.}/central.mvn; \
+        index=${.}/central.maven; \
         readOnly=true; \
         poll.time=-1; \
         name="Central"
@@ -24,6 +24,15 @@ javac.target: 11
         
 -groupid: org.geckoprojects.bnd
 
-base-version: 1.1.1.SNAPSHOT
+base-version: 1.2.0.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${base-version}}
+
 github-project: org.gecko.bnd
 category: ccc/Gecko OSGi Standard Templates
+osgi-test-category: ccc/OSGi-Test & JUnit5 Jupiter
+
+# Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
+releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS}
+
+# If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
+-maven-release.local: ${if;${def;releaseNotNeeded};local;remote}

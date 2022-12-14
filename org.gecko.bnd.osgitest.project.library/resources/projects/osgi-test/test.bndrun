@@ -1,0 +1,12 @@
+-library: enableOSGi-Test
+
+-runrequires: \
+	bnd.identity;id='{{projectName}}'
+	
+-runbundles.test: \
+	{{projectName}};version=snapshot
+
+#-runfw: org.apache.felix.framework
+
+#-runee: JavaSE-11
+

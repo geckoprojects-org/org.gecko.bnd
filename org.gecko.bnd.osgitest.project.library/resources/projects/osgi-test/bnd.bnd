@@ -1,17 +1,12 @@
-$if(javaLevel)$
-javac.source: $javaLevel$
-javac.target: $javaLevel$
-$endif$
+Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE}
 
-# enables JUnit 5 support for this project
--enable-junit5: true
+-library: enableOSGi-Test
 
 # sets the usually required buildpath using the bnd library, you can extend it with the normal -buildpath to your liking
 -buildpath: \
-	org.osgi.framework,\
-	org.osgi.service.cm
+	osgi.core;version=latest
 	
-Private-Package: $basePackageName$
+Private-Package: {{basePackageName}}
 
 Bundle-Version: 1.0.0.SNAPSHOT
 
