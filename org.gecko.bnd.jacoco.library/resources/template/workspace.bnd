@@ -7,14 +7,15 @@
 		readOnly            = true;\
 		name="Jacoco Dependencies"
 
-jacoco.version: 0.8.7
+jacoco.version: 0.8.8
 
 ## Runpath and vm args
 -runpath.jacoco:\
 	org.jacoco.agent,\
+	org.jacoco.ant,\
 	org.jacoco:org.jacoco.agent:jar:runtime
 
--runvm.coverage: -javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;latest}=destfile=${target-dir}/jacoco.exec
+-runvm.coverage: -javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;${jacoco.version}}=destfile=${target-dir}/jacoco.exec
 
 ## BndPomRepository could load g_a_v_c sind 6.0.0
--require-bnd: "(version>=6.2.0)"
+-require-bnd: "(version>=6.4.0)"
