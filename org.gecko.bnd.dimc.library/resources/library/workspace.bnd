@@ -6,24 +6,24 @@ Bundle-Version: ${project-version}
 Bundle-License: Eclipse Public License 2.0
 Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
 Bundle-Vendor: Data In Motion Consuling GmbH
-Bundle-ContactAddress: info@data-in-motion.biz
+Bundle-ContactAddress: info@datainmotion.com
 Bundle-Developers: \
     sbischof; \
         email="stbischof@bipolis.org"; \
         name="Stefan Bischof"; \
         roles="developer", \
     jalbert; \
-        email="j.albert@data-in-motion.biz"; \
+        email="j.albert@datainmotion.com"; \
         name="Juergen Albert"; \
         organization="Data In Motion"; \
-        organizationUrl="https://www.datainmotion.de"; \
+        organizationUrl="https://www.datainmotion.com"; \
         roles="architect,developer", \
     mhoffmann; \
         name="Mark Hoffmann"; \
-        email="m.hoffmann@data-in-motion.biz"; \
-        url="https://www.datainmotion.de"; \
+        email="m.hoffmann@datainmotion.com"; \
+        url="https://www.datainmotion.com"; \
         organization="Data In Motion"; \
-        organizationUrl="https://www.datainmotion.de"; \
+        organizationUrl="https://www.datainmotion.com"; \
         roles="developer,architect"
 
 project-version: ${base-version}.SNAPSHOT
