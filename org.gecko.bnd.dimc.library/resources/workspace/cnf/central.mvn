@@ -135,3 +135,7 @@ org.bouncycastle:bcutil-jdk15on:1.70
 org.slf4j:slf4j-simple:1.7.36
 org.slf4j:slf4j-api:1.7.36
 org.freemarker:freemarker:2.3.32
+
+org.geckoprojects.bnd:org.gecko.bnd.dimc.library:${mvn-base-version}
+org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:${mvn-base-version}
+org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:${mvn-base-version}

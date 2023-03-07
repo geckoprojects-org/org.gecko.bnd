@@ -22,22 +22,13 @@ javac.target: 11
 
 -plugin.3.Central: \
     aQute.bnd.repository.maven.provider.MavenBndRepository; \
-        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/"; \
+        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/,https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/"; \
         releaseUrl=https://repo.maven.apache.org/maven2/; \
         index=${.}/central.mvn; \
         readOnly=true; \
         poll.time=-1; \
         name="Central"
         
--plugin.4.DIM: \
-    aQute.bnd.repository.maven.provider.MavenBndRepository; \
-        snapshotUrl="https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/"; \
-        releaseUrl=https://devel.data-in-motion.biz/nexus/repository/dim-release/; \
-        index=${.}/dim.mvn; \
-        readOnly=true; \
-        poll.time=-1; \
-        name="DIM"
-
 -plugin.0.Local: \
 	aQute.bnd.deployer.repository.LocalIndexedRepo; \
 		name = Local; \
