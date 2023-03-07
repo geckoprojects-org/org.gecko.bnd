@@ -6,7 +6,7 @@
 -runbundles.test: \
 	{{projectName}};version=snapshot
 
-#-runfw: org.apache.felix.framework
+-runfw: org.apache.felix.framework
 
-#-runee: JavaSE-11
+-runee: JavaSE-11
 
