@@ -9,12 +9,7 @@
 
 jacoco.version: 0.8.8
 
-## Runpath and vm args
--runpath.jacoco:\
-	org.jacoco.agent,\
-	org.jacoco:org.jacoco.agent:jar:runtime
-
--runvm.coverage: -javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;${jacoco.version}}=destfile=${target-dir}/test-osgi.exec
+jacoco: true
 
 ## BndPomRepository could load g_a_v_c sind 6.0.0
 -require-bnd: "(version>=6.3.1)"

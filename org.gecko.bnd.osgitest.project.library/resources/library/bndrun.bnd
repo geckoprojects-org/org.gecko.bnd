@@ -15,3 +15,10 @@ test-runproperties: \
 	junit-platform-launcher;version=latest
 
 -require-bnd: "(version>=6.3.1)"
+
+## Runpath and vm args, if Jacoco is enabled
+-runpath.jacoco: \
+	${if;${jacoco};org.jacoco.agent,org.jacoco:org.jacoco.agent:jar:runtime}
+
+-runvm.coverage: \
+	${if;${jacoco};-javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;${jacoco.version}}=destfile=${target-dir}/test-osgi.exec}

@@ -19,6 +19,8 @@ header:
   paths-ignore:
     - 'dist'
     - 'licenses'
+    - 'org.gecko.bnd.dimc.library/resources/**/*'
+    - '**/*.setup'
     - '**/package-info.java'
     - '**/packageinfo'
     - '**/module-info.java'
