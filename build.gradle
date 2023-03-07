@@ -1,2 +1,61 @@
-// Available to customize the build
+plugins {
+  id "org.sonarqube" version "4.0.0"
+  id 'jacoco'
+  id 'java'
+}
+
+// We need to define a repository for the root project, otherwise Jacoco dependencies cannot be resolved
+repositories {
+  mavenCentral()
+}
+
+subprojects {
+
+    //  Apply plugin: 'jacoco' to all submodules JUnit tests are generated as generated/jacoco/test.exec
+    apply plugin: 'jacoco'
+    // We need to define a repository, otherwise Jacoco dependencies cannot be resolved
+    repositories {
+        mavenCentral()
+    }
+    // Allow gradle to enable JUnit support in submodules
+    test {
+        useJUnitPlatform()
+    }
+    
+}
+
+// Sonar setup
+sonarqube {
+  properties {
+    property "sonar.projectName", "€€project-symbolic-name€€"
+    property "sonar.projectKey", "geckoprojects-org_€€project-symbolic-name€€"
+    property "sonar.organization", "geckoprojects-org"
+    property "sonar.host.url", "https://sonarcloud.io"
+    property "sonar.coverage.jacoco.xmlReportPaths", "${rootDir}/build/reports/jacoco/codeCoverageReport/codeCoverageReport.xml"
+    //property "sonar.exclusions", "org.gecko.project/**/*.java, org.gecko.other.project/**/*.java"
+  }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    dependsOn(test)
+    // Gather execution data from all subprojects for JUnit generated/jacoco/test.exec for OSGi Tests generated/tmp/testOSGi/generated/jacoco.exec
+    // Latter are generated via agent in the test.bndrun
+    executionData fileTree(project.rootDir.absolutePath).include("**/**/*.exec")
+
+    // Add all relevant sourcesets from the subprojects
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    // Generate xml reposrt for tools like sonar and html for humans
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled false
+    }
+}
+
+tasks.named("sonar") {
+    dependsOn(codeCoverageReport)
+}
 
