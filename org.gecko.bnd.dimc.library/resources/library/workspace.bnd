@@ -67,7 +67,10 @@ dimcBaselining: true
 	 OSGI-OPT/*
 	
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
-releaseNotNeeded: ${if;${dimcBaselining};${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS};false}
+releaseNotNeeded: \
+	${if;${def;Bundle-Version};\
+		${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${base-version}));REPOS};\
+	false}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
 -maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
