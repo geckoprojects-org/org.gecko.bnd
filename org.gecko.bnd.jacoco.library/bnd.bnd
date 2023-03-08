@@ -9,7 +9,7 @@ Provide-Capability: \
 gecko-base:\
     bnd.library;\
         bnd.library     = geckoJacoco; \
-        path            = template
+        path            = library
         
 Bundle-Name: Bnd library for Jacoco
 Bundle-Description: Gecko Jacoco support as bndtools library

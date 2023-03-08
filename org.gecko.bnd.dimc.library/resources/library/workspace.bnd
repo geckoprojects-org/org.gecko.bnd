@@ -27,6 +27,7 @@ Bundle-Developers: \
         roles="developer,architect"
 
 project-version: ${base-version}.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${project-version}}
 
 # Includes sources from bundle
 -sources: true

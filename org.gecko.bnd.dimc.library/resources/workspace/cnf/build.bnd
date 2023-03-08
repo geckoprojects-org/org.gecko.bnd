@@ -7,22 +7,24 @@
 	geckoOSGi-Test,\
 	geckoJacoco
 
-# Needed because we enabled library 'gecko-dimc' 	
+# Needed because we enabled library 'gecko-dimc'
+# Activate baselining
+dimcBaselining: true
 github-project: €€project-symbolic-name€€
-base-version: 1.0.0.SNAPSHOT
-mvn-base-version: ${versionmask;===s;${base-version}}
+base-version: 1.0.0
 
 # Maven Central Group-Id
--groupid: €€project-symbolic-name€€
+# For Geckoprojects the groupid must start with org.geckoprojects
+-groupid: €€project-group-id€€
 
 javac.source: 11
 javac.target: 11
 
--require-bnd "(version>=6.4.0)"
+-require-bnd "(version>=6.3.1)"
 
 -plugin.3.Central: \
     aQute.bnd.repository.maven.provider.MavenBndRepository; \
-        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/,https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/"; \
+        snapshotUrl="https://oss.sonatype.org/content/repositories/snapshots/"; \
         releaseUrl=https://repo.maven.apache.org/maven2/; \
         index=${.}/central.mvn; \
         readOnly=true; \
