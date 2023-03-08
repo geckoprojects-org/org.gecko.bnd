@@ -42,21 +42,15 @@ project-version: ${base-version}.SNAPSHOT
     org.osgi.service.component.annotations,\
     org.osgi.service.metatype.annotations
 
+# Activate baselining per default to de-activate set 'dimBaselining: false'
+dimcBaselining: true
+
 #DIMC Nexus release repository    
 -plugin.dimrelease: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
 		snapshotUrl=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
 		releaseUrl=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
 		name='DIM_Release'
--plugin.baseline:\ 
-	${if;${def;-baseline};aQute.bnd.repository.osgi.OSGiRepository;\
-		locations=https://devel.data-in-motion.biz/repository/gecko/release/${github-project}/index.xml;\
-		max.stale=-1;\
-		name=Baseline;\
-		cache=${build}/cache/${github-project}}
-		
--baselinerepo: ${if;${def;-baseline};Baseline}
-#-baseline: *
 
 # Ignore files for baselining
 -diffignore: *.xml,\
@@ -73,7 +67,7 @@ project-version: ${base-version}.SNAPSHOT
 	 OSGI-OPT/*
 	
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
-releaseNotNeeded: ${if;${def;-baseline};${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS};false}
+releaseNotNeeded: ${if;${dimcBaselining};${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS};false}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
 -maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
@@ -87,6 +81,8 @@ releaseNotNeeded: ${if;${def;-baseline};${findproviders;osgi.identity;(&(osgi.id
 # If the 'release.dir property is set , we make a release release, otherwise we make only a snapshot release
 # As long as we are on Jenkins, we also release to Maven Central
 -include: \
+	${if;${dimcBaselining};\
+		${.}/baseline.bnd},\
 	${if;${def;release.dir};\
 		${.}/releng/release.bnd;\
 		${.}/releng/snapshot.bnd\

@@ -1,0 +1,8 @@
+-plugin.baseline:\
+	aQute.bnd.repository.osgi.OSGiRepository;\
+	locations=https://devel.data-in-motion.biz/repository/gecko/release/org.gecko.emf/index.xml;\
+	max.stale=-1;\
+	name=Baseline;\
+	cache=${build}/cache/org.gecko.emf
+		
+-baselinerepo: Baseline
