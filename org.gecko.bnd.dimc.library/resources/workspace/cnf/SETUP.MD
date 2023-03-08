@@ -63,3 +63,15 @@ git checkout -b "initial"
 - [Jenkins GitHub-Group](https://devel.data-in-motion.biz/jenkins/job/GH/) should show `€€project-symbolic-name€€`
 - [Jenkins €€project-symbolic-name€€ branches](https://devel.data-in-motion.biz/jenkins/job/GH/job/€€project-symbolic-name€€/)
 
+## License check
+
+To execute the license check in you local build folder just run:
+
+`docker run -it --rm -v $(pwd):/github/workspace ghcr.io/apache/skywalking-eyes/license-eye header check`
+
+It will give you the check result
+
+The license check also runs as GitHub action for branches **main** and **snapshot**. 
+
+To exclude or include files, use the `.licenserc.yaml` file in the build folder. To customize the build action use the *.github/workflows/license.yml*
+

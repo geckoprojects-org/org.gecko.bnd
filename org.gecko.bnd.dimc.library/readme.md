@@ -74,5 +74,9 @@ This action can only be triggered from our internal Jenkins instance.
 
 ### Baselining 
 
-Baselining is pre-configured for the Data In Motion release repository. Baselining can then be activated for each project, if wanted.
+Baselining is pre-configured for the Data In Motion release repository. Baselining can then be activated for each project, if wanted using `-baseline: *`.
+
+There is a variable that is preset to `dimcBaselining: true`.
+
+If you set this variable to false in your *build.bnd*, baselining will be deactivated.
 

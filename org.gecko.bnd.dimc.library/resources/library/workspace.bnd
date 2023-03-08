@@ -6,27 +6,28 @@ Bundle-Version: ${project-version}
 Bundle-License: Eclipse Public License 2.0
 Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
 Bundle-Vendor: Data In Motion Consuling GmbH
-Bundle-ContactAddress: info@data-in-motion.biz
+Bundle-ContactAddress: info@datainmotion.com
 Bundle-Developers: \
     sbischof; \
         email="stbischof@bipolis.org"; \
         name="Stefan Bischof"; \
         roles="developer", \
     jalbert; \
-        email="j.albert@data-in-motion.biz"; \
+        email="j.albert@datainmotion.com"; \
         name="Juergen Albert"; \
         organization="Data In Motion"; \
-        organizationUrl="https://www.datainmotion.de"; \
+        organizationUrl="https://www.datainmotion.com"; \
         roles="architect,developer", \
     mhoffmann; \
         name="Mark Hoffmann"; \
-        email="m.hoffmann@data-in-motion.biz"; \
-        url="https://www.datainmotion.de"; \
+        email="m.hoffmann@datainmotion.com"; \
+        url="https://www.datainmotion.com"; \
         organization="Data In Motion"; \
-        organizationUrl="https://www.datainmotion.de"; \
+        organizationUrl="https://www.datainmotion.com"; \
         roles="developer,architect"
 
 project-version: ${base-version}.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${project-version}}
 
 # Includes sources from bundle
 -sources: true
@@ -42,20 +43,15 @@ project-version: ${base-version}.SNAPSHOT
     org.osgi.service.component.annotations,\
     org.osgi.service.metatype.annotations
 
+# Activate baselining per default to de-activate set 'dimBaselining: false'
+dimcBaselining: true
+
 #DIMC Nexus release repository    
 -plugin.dimrelease: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
 		snapshotUrl=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
 		releaseUrl=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
 		name='DIM_Release'
--plugin.baseline:\
-	aQute.bnd.repository.osgi.OSGiRepository;\
-		locations=https://devel.data-in-motion.biz/repository/gecko/release/${github-project}/index.xml;\
-		max.stale=-1;\
-		name=Baseline;\
-		cache=${build}/cache/${github-project}
--baselinerepo: Baseline
-#-baseline: *
 
 # Ignore files for baselining
 -diffignore: *.xml,\
@@ -72,7 +68,10 @@ project-version: ${base-version}.SNAPSHOT
 	 OSGI-OPT/*
 	
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
-releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS}
+releaseNotNeeded: \
+	${if;${def;Bundle-Version};\
+		${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${base-version}));REPOS};\
+	false}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
 -maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
@@ -86,6 +85,8 @@ releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version
 # If the 'release.dir property is set , we make a release release, otherwise we make only a snapshot release
 # As long as we are on Jenkins, we also release to Maven Central
 -include: \
+	${if;${dimcBaselining};\
+		${.}/baseline.bnd},\
 	${if;${def;release.dir};\
 		${.}/releng/release.bnd;\
 		${.}/releng/snapshot.bnd\

@@ -1,14 +1,27 @@
 plugins {
-  id "org.sonarqube" version "3.1.1"
+  id "org.sonarqube" version "4.0.0.2929"
   id 'jacoco'
   id 'java'
 }
 
-// Allow gradle to enable JUnit support in submodules
+// We need to define a repository for the root project, otherwise Jacoco dependencies cannot be resolved
+repositories {
+  mavenCentral()
+}
+
 subprojects {
-  tasks.withType(Test) {
-    useJUnitPlatform()
-  }
+
+    //  Apply plugin: 'jacoco' to all submodules JUnit tests are generated as generated/jacoco/test.exec
+    apply plugin: 'jacoco'
+    // We need to define a repository, otherwise Jacoco dependencies cannot be resolved
+    repositories {
+        mavenCentral()
+    }
+    // Allow gradle to enable JUnit support in submodules
+    test {
+        useJUnitPlatform()
+    }
+    
 }
 
 // Sonar setup
@@ -25,14 +38,16 @@ sonarqube {
 
 task codeCoverageReport(type: JacocoReport) {
     dependsOn(test)
-    // Gather execution data from all subprojects
-    executionData fileTree(project.rootDir.absolutePath).include("**/**/jacoco.exec")
+    // Gather execution data from all subprojects for JUnit generated/jacoco/test.exec for OSGi Tests generated/tmp/testOSGi/generated/jacoco.exec
+    // Latter are generated via agent in the test.bndrun
+    executionData fileTree(project.rootDir.absolutePath).include("**/**/*.exec")
 
     // Add all relevant sourcesets from the subprojects
     subprojects.each {
         sourceSets it.sourceSets.main
     }
 
+    // Generate xml reposrt for tools like sonar and html for humans
     reports {
         xml.enabled true
         html.enabled true
@@ -40,7 +55,7 @@ task codeCoverageReport(type: JacocoReport) {
     }
 }
 
-tasks.named("sonarqube") {
+tasks.named("sonar") {
     dependsOn(codeCoverageReport)
 }
 

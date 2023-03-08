@@ -15,3 +15,7 @@ test-runproperties: \
 	junit-platform-launcher;version=latest
 
 -require-bnd: "(version>=6.3.1)"
+
+## Runpath and vm args, if Jacoco is enabled
+-include: \
+	${if;${def;jacoco};${.}/jacoco.bnd}
