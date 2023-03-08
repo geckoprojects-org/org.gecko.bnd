@@ -48,13 +48,14 @@ project-version: ${base-version}.SNAPSHOT
 		snapshotUrl=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
 		releaseUrl=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
 		name='DIM_Release'
--plugin.baseline:\
-	aQute.bnd.repository.osgi.OSGiRepository;\
+-plugin.baseline:\ 
+	${if;${def;-baseline};aQute.bnd.repository.osgi.OSGiRepository;\
 		locations=https://devel.data-in-motion.biz/repository/gecko/release/${github-project}/index.xml;\
 		max.stale=-1;\
 		name=Baseline;\
-		cache=${build}/cache/${github-project}
--baselinerepo: Baseline
+		cache=${build}/cache/${github-project}}
+		
+-baselinerepo: ${if;${def;-baseline};Baseline}
 #-baseline: *
 
 # Ignore files for baselining
@@ -72,7 +73,7 @@ project-version: ${base-version}.SNAPSHOT
 	 OSGI-OPT/*
 	
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
-releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS}
+releaseNotNeeded: ${if;${def;-baseline};${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS};false}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
 -maven-release.local: ${if;${def;releaseNotNeeded};local;remote}

@@ -18,7 +18,7 @@ test-runproperties: \
 
 ## Runpath and vm args, if Jacoco is enabled
 -runpath.jacoco: \
-	${if;${jacoco};org.jacoco.agent,org.jacoco:org.jacoco.agent:jar:runtime}
+	${if;${def;jacoco};org.jacoco.agent,org.jacoco:org.jacoco.agent:jar:runtime}
 
 -runvm.coverage: \
-	${if;${jacoco};-javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;${jacoco.version}}=destfile=${target-dir}/test-osgi.exec}
+	${if;${def;jacoco};-javaagent:${repo;org.jacoco:org.jacoco.agent:jar:runtime;${jacoco.version}}=destfile=${target-dir}/test-osgi.exec}
