@@ -26,22 +26,28 @@
       xsi:type="setup:VariableTask"
       id="var.installation.name"
       name="installation.name"
-      label="Installation Name"/>
+      storageURI="scope://Installation"
+      label="Installation name"/>
   <setupTask
       xsi:type="setup:VariableTask"
       id="var.workspace.name"
       name="workspace.name"
       defaultValue="ws"
-      label="Workspace Name"/>
+      storageURI="scope://Workspace"
+      label="Workspace name"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      id="var.data"
+      type="BOOLEAN"
+      name="use.data.folder"
+      defaultValue="true"
+      storageURI="scope://Installation"
+      label="Use -data property">
+    <description>Variable wether to use the data folder variable or not</description>
+  </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse.ini">
-    <setupTask
-        xsi:type="setup:EclipseIniTask"
-        option="-data"
-        value="./../${workspace.name}">
-      <description>Set workspace path</description>
-    </setupTask>
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-perspective"
@@ -53,6 +59,17 @@
         option="-Xmx"
         value="4G"
         vm="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      filter="(use.data.folder=true)"
+      name="Eclipse.ini Workspace">
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-data"
+        value="./../${workspace.name}">
+      <description>Set workspace path</description>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:ResourceCreationTask"
@@ -69,7 +86,6 @@
       Path=${installation.location}/eclipse
       Exec=${installation.location}/eclipse/eclipse -data ./../${workspace.name} -clean
       Categories=Application;Development;IDE;
-
     </content>
   </setupTask>
   <setupTask
@@ -83,6 +99,15 @@
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.core.resources/encoding"
         value="UTF-8"/>
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.oomph.setup.ui/p2.startup.tasks"
+        value="NEVER"/>
+
+    <setupTask
+        xsi:type="setup:PreferenceTask"
+        key="/instance/org.eclipse.oomph.setup.ui/skip.startup.tasks"
+        value="true"/>
     <setupTask
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.typefilter.enabled"
@@ -141,703 +166,6 @@
     </setupTask>
     <description>BNDTools Preferences</description>
   </setupTask>
-  <version name="gecko-bnd-2021-06"
-      label="Gecko BND 2021-06"
-      requiredJavaVersion="1.11">
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        id="dependencies.2021-06"
-        label="${scope.product.label} (${scope.product.version.label})">
-      <requirement
-          name="epp.package.modeling"/>
-      <requirement
-          name="org.eclipse.platform.feature.group"/>
-      <requirement
-          name="org.eclipse.rcp.feature.group"/>
-      <requirement
-          name="org.eclipse.e4.core.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.egit.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.cdo.epp.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.diagram.sirius.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.egit.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.ide.ui.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecoretools.design.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.transaction.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.validation.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gef.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gmf.runtime.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.jdt.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.context_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.ide_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.java_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.pde_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.ocl.all.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.oomph.setup.feature.group"/>
-      <requirement
-          name="org.eclipse.pde.feature.group"/>
-      <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.uml2.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.xsd.sdk.feature.group"/>
-      <requirement
-          name="bndtools.main.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.m2m.qvt.oml.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.acceleo.feature.group"/>
-      <requirement
-          name="jsonedit-feature.feature.group"/>
-      <requirement
-          name="org.eclipse.m2e.feature.feature.group"/>
-      <requirement
-          name="org.gecko.emf.osgi.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.ocl.examples.feature.group"/>
-      <requirement
-          name="org.eclipse.linuxtools.docker.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.ecore.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.lib.feature.feature.group"/>
-      <repository
-          url="https://bndtools.jfrog.io/bndtools/update-latest/"/>
-      <repository
-          url="http://devel.data-in-motion.biz/public/repository/gecko/release/geckoEMF.eclipse.tooling/"/>
-      <repository
-          url="http://boothen.github.io/Json-Eclipse-Plugin/"/>
-      <repository
-          url="http://download.eclipse.org/releases/2021-06"/>
-      <repository
-          url="http://hallvard.github.io/plantuml/"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        name="installation.name"
-        label="Installation Name"/>
-    <setupTask
-        xsi:type="setup:ResourceCreationTask"
-        id="gnome.desktop.2021-06"
-        filter="(osgi.os=linux)"
-        targetURL="file://${user.home}/.local/share/applications/${installation.name}.desktop">
-      <content>
-
-        [Desktop Entry]
-        Encoding=UTF-8
-        Version=2021-06
-        Type=Application
-        Name=${installation.name}
-        Terminal=false
-        Icon=${installation.location}/eclipse/icon.xpm
-        Path=${installation.location}/eclipse
-        Exec=${installation.location}/eclipse/eclipse -data ./../${workspace.name} -clean
-        Categories=Application;Development;IDE;
-
-      </content>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="org.bndtools.prefs.2021-06"
-        name="Preferences">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.bndtools.templating.gitrepo/gitRepos"
-          value="https://gitlab.com/gecko.io/bnd-rcp-workspace-template.git;name=&quot;Gecko RCP Workspace&quot;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.core.resources/encoding"
-          value="UTF-8"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.typefilter.enabled"
-          value="java.awt.*;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui.editors/lineNumberRuler"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/SHOW_TEXT_ON_PERSPECTIVE_BAR"
-          value="false"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/defaultPerspectiveId"
-          value="bndtools.perspective"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.egit.ui/commit_dialog_signed_off_by"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/enableTemplateRepo"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/templateRepoUriList"
-          value="https://devel.data-in-motion.biz/public/repository/gecko/snapshot/geckoBndTemplates/index.xml https://devel.data-in-motion.biz/repository/gecko/snapshot/org.geckoprojects.bnd.template/index.xml"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates"
-          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&lt;templates>&lt;template autoinsert=&quot;false&quot; context=&quot;gettercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for getter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.gettercomment&quot; name=&quot;gettercomment&quot;>/**&#xA; * Returns the $${bare_field_name}.&#xA; * @return the $${bare_field_name}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;settercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for setter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.settercomment&quot; name=&quot;settercomment&quot;>/**&#xA; * Sets the $${bare_field_name}.&#xA; * @param $${param} the $${bare_field_name} to set&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;constructorcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created constructors&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.constructorcomment&quot; name=&quot;constructorcomment&quot;>/**&#xA; * Creates a new instance.&#xA; * $${tags}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;filecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created Java files&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.filecomment&quot; name=&quot;filecomment&quot;>/**&#xA; * Copyright (c) 2012 - $${year} Data In Motion and others.&#xA; * All rights reserved. &#xA; * &#xA; * This program and the accompanying materials are made available under the terms of the &#xA; * Eclipse Public License v2.0 which accompanies this distribution, and is available at&#xA; * http://www.eclipse.org/legal/epl-v20.html&#xA; * &#xA; * Contributors:&#xA; *     Data In Motion - initial API and implementation&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;typecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created types&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.typecomment&quot; name=&quot;typecomment&quot;>/**&#xA; * $${tags}&#xA; * @author $${user}&#xA; * @since $${date}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;fieldcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for fields&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.fieldcomment&quot; name=&quot;fieldcomment&quot;>/** $${field} */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;overridecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for overriding methods&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.overridecomment&quot; name=&quot;overridecomment&quot;>/* &#xA; * (non-Javadoc)&#xA; * $${see_to_overridden}&#xA; */&lt;/template>&lt;/templates>">
-        <description>Data In Motion Code Templates</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode"
-          value="enabled"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.javadoc"
-          value="true">
-        <description>Auto generate comments for new files and methods</description>
-      </setupTask>
-      <description>BNDTools Preferences</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="workspace.2021-06"
-        name="workspace.name"
-        defaultValue="ws"
-        label="Workspace Name"/>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="eclipse.ini.2021-06"
-        name="Eclipse.ini">
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.2021-06"
-          option="-data"
-          value="./../${workspace.name}">
-        <description>Set workspace path</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.persp.2021-06"
-          option="-perspective"
-          value="bndtools.perspective">
-        <description>Set Perspective</description>
-      </setupTask>
-    </setupTask>
-    <description>Gecko.io IDE setup for Eclipse 2021-06.</description>
-  </version>
-  <version name="gecko-bnd-2021-09"
-      label="Gecko BND 2021-09"
-      requiredJavaVersion="1.11">
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        id="dependencies.2021-09"
-        label="${scope.product.label} (${scope.product.version.label})">
-      <requirement
-          name="epp.package.modeling"/>
-      <requirement
-          name="org.eclipse.platform.feature.group"/>
-      <requirement
-          name="org.eclipse.rcp.feature.group"/>
-      <requirement
-          name="org.eclipse.e4.core.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.egit.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.cdo.epp.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.diagram.sirius.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.egit.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.ide.ui.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecoretools.design.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.transaction.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.validation.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gef.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gmf.runtime.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.jdt.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.context_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.ide_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.java_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.pde_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.ocl.all.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.oomph.setup.feature.group"/>
-      <requirement
-          name="org.eclipse.pde.feature.group"/>
-      <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.uml2.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.xsd.sdk.feature.group"/>
-      <requirement
-          name="bndtools.main.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.m2m.qvt.oml.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.acceleo.feature.group"/>
-      <requirement
-          name="jsonedit-feature.feature.group"/>
-      <requirement
-          name="org.eclipse.m2e.feature.feature.group"/>
-      <requirement
-          name="org.gecko.emf.osgi.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.ocl.examples.feature.group"/>
-      <requirement
-          name="org.eclipse.linuxtools.docker.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.ecore.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.lib.feature.feature.group"/>
-      <requirement
-          name="bndtools.m2e.feature.feature.group"/>
-      <requirement
-          name="bndtools.pde.feature.feature.group"/>
-      <repository
-          url="https://bndtools.jfrog.io/bndtools/update-latest/"/>
-      <repository
-          url="http://devel.data-in-motion.biz/public/repository/gecko/release/geckoEMF.eclipse.tooling/"/>
-      <repository
-          url="http://boothen.github.io/Json-Eclipse-Plugin/"/>
-      <repository
-          url="http://download.eclipse.org/releases/2021-09"/>
-      <repository
-          url="http://hallvard.github.io/plantuml/"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="installation.2021-09"
-        name="installation.name"
-        label="Installation Name"/>
-    <setupTask
-        xsi:type="setup:ResourceCreationTask"
-        id="gnome.desktop.2021-09"
-        filter="(osgi.os=linux)"
-        targetURL="file://${user.home}/.local/share/applications/${installation.name}.desktop">
-      <content>
-
-        [Desktop Entry]
-        Encoding=UTF-8
-        Version=2021-06
-        Type=Application
-        Name=${installation.name}
-        Terminal=false
-        Icon=${installation.location}/eclipse/icon.xpm
-        Path=${installation.location}/eclipse
-        Exec=${installation.location}/eclipse/eclipse -data ./../${workspace.name} -clean
-        Categories=Application;Development;IDE;
-
-      </content>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="org.bndtools.prefs.2021-09"
-        name="Preferences">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.bndtools.templating.gitrepo/gitRepos"
-          value="https://gitlab.com/gecko.io/bnd-rcp-workspace-template.git;name=&quot;Gecko RCP Workspace&quot;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.core.resources/encoding"
-          value="UTF-8"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.typefilter.enabled"
-          value="java.awt.*;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui.editors/lineNumberRuler"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/SHOW_TEXT_ON_PERSPECTIVE_BAR"
-          value="false"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/defaultPerspectiveId"
-          value="bndtools.perspective"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.egit.ui/commit_dialog_signed_off_by"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/enableTemplateRepo"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/templateRepoUriList"
-          value="https://devel.data-in-motion.biz/public/repository/gecko/snapshot/geckoBndTemplates/index.xml https://devel.data-in-motion.biz/repository/gecko/snapshot/org.geckoprojects.bnd.template/index.xml"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates"
-          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&lt;templates>&lt;template autoinsert=&quot;false&quot; context=&quot;gettercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for getter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.gettercomment&quot; name=&quot;gettercomment&quot;>/**&#xA; * Returns the $${bare_field_name}.&#xA; * @return the $${bare_field_name}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;settercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for setter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.settercomment&quot; name=&quot;settercomment&quot;>/**&#xA; * Sets the $${bare_field_name}.&#xA; * @param $${param} the $${bare_field_name} to set&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;constructorcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created constructors&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.constructorcomment&quot; name=&quot;constructorcomment&quot;>/**&#xA; * Creates a new instance.&#xA; * $${tags}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;filecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created Java files&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.filecomment&quot; name=&quot;filecomment&quot;>/**&#xA; * Copyright (c) 2012 - $${year} Data In Motion and others.&#xA; * All rights reserved. &#xA; * &#xA; * This program and the accompanying materials are made available under the terms of the &#xA; * Eclipse Public License v2.0 which accompanies this distribution, and is available at&#xA; * http://www.eclipse.org/legal/epl-v20.html&#xA; * &#xA; * Contributors:&#xA; *     Data In Motion - initial API and implementation&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;typecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created types&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.typecomment&quot; name=&quot;typecomment&quot;>/**&#xA; * $${tags}&#xA; * @author $${user}&#xA; * @since $${date}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;fieldcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for fields&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.fieldcomment&quot; name=&quot;fieldcomment&quot;>/** $${field} */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;overridecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for overriding methods&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.overridecomment&quot; name=&quot;overridecomment&quot;>/* &#xA; * (non-Javadoc)&#xA; * $${see_to_overridden}&#xA; */&lt;/template>&lt;/templates>">
-        <description>Data In Motion Code Templates</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode"
-          value="enabled"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.javadoc"
-          value="true">
-        <description>Auto generate comments for new files and methods</description>
-      </setupTask>
-      <description>BNDTools Preferences</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="workspace.2021-09"
-        name="workspace.name"
-        defaultValue="ws"
-        label="Workspace Name"/>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="eclipse.ini.2021-09"
-        name="Eclipse.ini">
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.2021-09"
-          option="-data"
-          value="./../${workspace.name}">
-        <description>Set workspace path</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.persp.2021-09"
-          option="-perspective"
-          value="bndtools.perspective">
-        <description>Set Perspective</description>
-      </setupTask>
-    </setupTask>
-    <description>Gecko.io IDE setup for Eclipse 2021-09.</description>
-  </version>
-  <version name="gecko-bnd-2021-12"
-      label="Gecko BND 2021-12"
-      requiredJavaVersion="1.11">
-    <setupTask
-        xsi:type="setup.p2:P2Task"
-        id="dependencies.2021-12"
-        label="${scope.product.label} (${scope.product.version.label})">
-      <requirement
-          name="epp.package.modeling"/>
-      <requirement
-          name="org.eclipse.platform.feature.group"/>
-      <requirement
-          name="org.eclipse.rcp.feature.group"/>
-      <requirement
-          name="org.eclipse.e4.core.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.egit.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.cdo.epp.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.diagram.sirius.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.egit.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.ide.ui.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecoretools.design.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.transaction.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.validation.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gef.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gmf.runtime.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.jdt.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.context_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.ide_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.java_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.pde_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.ocl.all.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.oomph.setup.feature.group"/>
-      <requirement
-          name="org.eclipse.pde.feature.group"/>
-      <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.uml2.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.xsd.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.m2m.qvt.oml.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.acceleo.feature.group"/>
-      <requirement
-          name="jsonedit-feature.feature.group"/>
-      <requirement
-          name="org.eclipse.m2e.feature.feature.group"/>
-      <requirement
-          name="org.gecko.emf.osgi.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.ocl.examples.feature.group"/>
-      <requirement
-          name="org.eclipse.linuxtools.docker.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.ecore.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.feature.feature.group"/>
-      <requirement
-          name="net.sourceforge.plantuml.lib.feature.feature.group"/>
-      <requirement
-          name="bndtools.main.feature.feature.group"/>
-      <requirement
-          name="bndtools.m2e.feature.feature.group"/>
-      <requirement
-          name="bndtools.pde.feature.feature.group"/>
-      <repository
-          url="https://bndtools.jfrog.io/bndtools/update-latest/"/>
-      <repository
-          url="http://devel.data-in-motion.biz/public/repository/gecko/release/geckoEMF.eclipse.tooling/"/>
-      <repository
-          url="http://boothen.github.io/Json-Eclipse-Plugin/"/>
-      <repository
-          url="http://download.eclipse.org/releases/2021-12"/>
-      <repository
-          url="http://hallvard.github.io/plantuml/"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="installation.2021-12"
-        name="installation.name"
-        label="Installation Name"/>
-    <setupTask
-        xsi:type="setup:ResourceCreationTask"
-        id="gnome.desktop.2021-12"
-        filter="(osgi.os=linux)"
-        targetURL="file://${user.home}/.local/share/applications/${installation.name}.desktop">
-      <content>
-
-        [Desktop Entry]
-        Encoding=UTF-8
-        Version=2021-12
-        Type=Application
-        Name=${installation.name}
-        Terminal=false
-        Icon=${installation.location}/eclipse/icon.xpm
-        Path=${installation.location}/eclipse
-        Exec=${installation.location}/eclipse/eclipse -data ./../${workspace.name} -clean
-        Categories=Application;Development;IDE;
-
-      </content>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="org.bndtools.prefs.2021-12"
-        name="Preferences">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.bndtools.templating.gitrepo/gitRepos"
-          value="https://gitlab.com/gecko.io/bnd-rcp-workspace-template.git;name=&quot;Gecko RCP Workspace&quot;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.core.resources/encoding"
-          value="UTF-8"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.typefilter.enabled"
-          value="java.awt.*;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui.editors/lineNumberRuler"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/SHOW_TEXT_ON_PERSPECTIVE_BAR"
-          value="false"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/defaultPerspectiveId"
-          value="bndtools.perspective"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.egit.ui/commit_dialog_signed_off_by"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/enableTemplateRepo"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/templateRepoUriList"
-          value="https://devel.data-in-motion.biz/public/repository/gecko/snapshot/geckoBndTemplates/index.xml https://devel.data-in-motion.biz/repository/gecko/snapshot/org.geckoprojects.bnd.template/index.xml"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates"
-          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&lt;templates>&lt;template autoinsert=&quot;false&quot; context=&quot;gettercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for getter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.gettercomment&quot; name=&quot;gettercomment&quot;>/**&#xA; * Returns the $${bare_field_name}.&#xA; * @return the $${bare_field_name}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;settercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for setter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.settercomment&quot; name=&quot;settercomment&quot;>/**&#xA; * Sets the $${bare_field_name}.&#xA; * @param $${param} the $${bare_field_name} to set&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;constructorcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created constructors&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.constructorcomment&quot; name=&quot;constructorcomment&quot;>/**&#xA; * Creates a new instance.&#xA; * $${tags}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;filecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created Java files&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.filecomment&quot; name=&quot;filecomment&quot;>/**&#xA; * Copyright (c) 2012 - $${year} Data In Motion and others.&#xA; * All rights reserved. &#xA; * &#xA; * This program and the accompanying materials are made available under the terms of the &#xA; * Eclipse Public License v2.0 which accompanies this distribution, and is available at&#xA; * http://www.eclipse.org/legal/epl-v20.html&#xA; * &#xA; * Contributors:&#xA; *     Data In Motion - initial API and implementation&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;typecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created types&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.typecomment&quot; name=&quot;typecomment&quot;>/**&#xA; * $${tags}&#xA; * @author $${user}&#xA; * @since $${date}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;fieldcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for fields&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.fieldcomment&quot; name=&quot;fieldcomment&quot;>/** $${field} */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;overridecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for overriding methods&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.overridecomment&quot; name=&quot;overridecomment&quot;>/* &#xA; * (non-Javadoc)&#xA; * $${see_to_overridden}&#xA; */&lt;/template>&lt;/templates>">
-        <description>Data In Motion Code Templates</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode"
-          value="enabled"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.javadoc"
-          value="true">
-        <description>Auto generate comments for new files and methods</description>
-      </setupTask>
-      <description>BNDTools Preferences</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="workspace.2021-12"
-        name="workspace.name"
-        defaultValue="ws"
-        label="Workspace Name"/>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="eclipse.ini.2021-12"
-        name="Eclipse.ini">
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.2021-12"
-          option="-data"
-          value="./../${workspace.name}">
-        <description>Set workspace path</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.persp.2021-12"
-          option="-perspective"
-          value="bndtools.perspective">
-        <description>Set Perspective</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.mem.2021-12"
-          option="-Xmx"
-          value="4G"
-          vm="true"/>
-    </setupTask>
-    <description>Gecko.io IDE setup for Eclipse 2021-12.</description>
-  </version>
   <version name="gecko-bnd-2022-03"
       label="Gecko BND 2022-03"
       requiredJavaVersion="1.11">
@@ -947,132 +275,6 @@
           url="http://download.eclipse.org/releases/2022-03"/>
       <repository
           url="http://hallvard.github.io/plantuml/"/>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="installation.2022-03"
-        name="installation.name"
-        label="Installation Name"/>
-    <setupTask
-        xsi:type="setup:ResourceCreationTask"
-        id="gnome.desktop.2022-03"
-        filter="(osgi.os=linux)"
-        targetURL="file://${user.home}/.local/share/applications/${installation.name}.desktop">
-      <content>
-
-        [Desktop Entry]
-        Encoding=UTF-8
-        Version=2021-12
-        Type=Application
-        Name=${installation.name}
-        Terminal=false
-        Icon=${installation.location}/eclipse/icon.xpm
-        Path=${installation.location}/eclipse
-        Exec=${installation.location}/eclipse/eclipse -data ./../${workspace.name} -clean
-        Categories=Application;Development;IDE;
-
-      </content>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="org.bndtools.prefs.2022-03"
-        name="Preferences">
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.bndtools.templating.gitrepo/gitRepos"
-          value="https://gitlab.com/gecko.io/bnd-rcp-workspace-template.git;name=&quot;Gecko RCP Workspace&quot;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.core.resources/encoding"
-          value="UTF-8"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.typefilter.enabled"
-          value="java.awt.*;"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui.editors/lineNumberRuler"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/SHOW_TEXT_ON_PERSPECTIVE_BAR"
-          value="false"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.ui/defaultPerspectiveId"
-          value="bndtools.perspective"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.egit.ui/commit_dialog_signed_off_by"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/enableTemplateRepo"
-          value="true"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/bndtools.core/templateRepoUriList"
-          value="https://devel.data-in-motion.biz/public/repository/gecko/snapshot/geckoBndTemplates/index.xml https://devel.data-in-motion.biz/repository/gecko/snapshot/org.geckoprojects.bnd.template/index.xml"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates"
-          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&lt;templates>&lt;template autoinsert=&quot;false&quot; context=&quot;gettercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for getter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.gettercomment&quot; name=&quot;gettercomment&quot;>/**&#xA; * Returns the $${bare_field_name}.&#xA; * @return the $${bare_field_name}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;settercomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for setter method&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.settercomment&quot; name=&quot;settercomment&quot;>/**&#xA; * Sets the $${bare_field_name}.&#xA; * @param $${param} the $${bare_field_name} to set&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;constructorcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created constructors&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.constructorcomment&quot; name=&quot;constructorcomment&quot;>/**&#xA; * Creates a new instance.&#xA; * $${tags}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;filecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created Java files&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.filecomment&quot; name=&quot;filecomment&quot;>/**&#xA; * Copyright (c) 2012 - $${year} Data In Motion and others.&#xA; * All rights reserved. &#xA; * &#xA; * This program and the accompanying materials are made available under the terms of the &#xA; * Eclipse Public License v2.0 which accompanies this distribution, and is available at&#xA; * http://www.eclipse.org/legal/epl-v20.html&#xA; * &#xA; * Contributors:&#xA; *     Data In Motion - initial API and implementation&#xA; */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;typecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for created types&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.typecomment&quot; name=&quot;typecomment&quot;>/**&#xA; * $${tags}&#xA; * @author $${user}&#xA; * @since $${date}&#xA; */&lt;/template>&lt;template autoinsert=&quot;true&quot; context=&quot;fieldcomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for fields&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.fieldcomment&quot; name=&quot;fieldcomment&quot;>/** $${field} */&lt;/template>&lt;template autoinsert=&quot;false&quot; context=&quot;overridecomment_context&quot; deleted=&quot;false&quot; description=&quot;Comment for overriding methods&quot; enabled=&quot;true&quot; id=&quot;org.eclipse.jdt.ui.text.codetemplates.overridecomment&quot; name=&quot;overridecomment&quot;>/* &#xA; * (non-Javadoc)&#xA; * $${see_to_overridden}&#xA; */&lt;/template>&lt;/templates>">
-        <description>Data In Motion Code Templates</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode"
-          value="enabled"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source"
-          value="11"/>
-      <setupTask
-          xsi:type="setup:PreferenceTask"
-          key="/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.javadoc"
-          value="true">
-        <description>Auto generate comments for new files and methods</description>
-      </setupTask>
-      <description>BNDTools Preferences</description>
-    </setupTask>
-    <setupTask
-        xsi:type="setup:VariableTask"
-        id="workspace.2022-03"
-        name="workspace.name"
-        defaultValue="ws"
-        label="Workspace Name"/>
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        id="eclipse.ini.2022-03"
-        name="Eclipse.ini">
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.2022-03"
-          option="-data"
-          value="./../${workspace.name}">
-        <description>Set workspace path</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.persp.2022-03"
-          option="-perspective"
-          value="bndtools.perspective">
-        <description>Set Perspective</description>
-      </setupTask>
-      <setupTask
-          xsi:type="setup:EclipseIniTask"
-          id="eclipse-ini.mem.2022-03"
-          option="-Xmx"
-          value="4G"
-          vm="true"/>
     </setupTask>
     <description>Gecko.io IDE setup for Eclipse 2022-03.</description>
   </version>
@@ -1268,6 +470,101 @@
           url="http://hallvard.github.io/plantuml/"/>
     </setupTask>
     <description>Gecko.io IDE setup for Eclipse 2022-12.</description>
+  </version>
+  <version name="gecko-bnd-2023-03"
+      label="Gecko BND 2023-03"
+      requiredJavaVersion="17">
+    <setupTask
+        xsi:type="setup.p2:P2Task"
+        label="${scope.product.label} (${scope.product.version.label})">
+      <requirement
+          name="epp.package.modeling"/>
+      <requirement
+          name="org.eclipse.platform.feature.group"/>
+      <requirement
+          name="org.eclipse.rcp.feature.group"/>
+      <requirement
+          name="org.eclipse.e4.core.tools.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.egit.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.compare.diagram.sirius.source.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.compare.egit.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.compare.ide.ui.source.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.compare.source.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.ecoretools.design.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.parsley.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.parsley.sdk.source.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.query.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.transaction.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.validation.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.gef.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.gmf.runtime.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.jdt.feature.group"/>
+      <requirement
+          name="org.eclipse.ocl.all.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.oomph.setup.feature.group"/>
+      <requirement
+          name="org.eclipse.pde.feature.group"/>
+      <requirement
+          name="org.eclipse.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.uml2.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.xsd.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.m2m.qvt.oml.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.acceleo.feature.group"/>
+      <requirement
+          name="jsonedit-feature.feature.group"/>
+      <requirement
+          name="org.eclipse.m2e.feature.feature.group"/>
+      <requirement
+          name="org.gecko.emf.osgi.tools.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.ocl.examples.feature.group"/>
+      <requirement
+          name="org.eclipse.linuxtools.docker.feature.feature.group"/>
+      <requirement
+          name="net.sourceforge.plantuml.ecore.feature.feature.group"/>
+      <requirement
+          name="net.sourceforge.plantuml.feature.feature.group"/>
+      <requirement
+          name="net.sourceforge.plantuml.lib.feature.feature.group"/>
+      <requirement
+          name="bndtools.main.feature.feature.group"/>
+      <requirement
+          name="bndtools.m2e.feature.feature.group"/>
+      <requirement
+          name="bndtools.pde.feature.feature.group"/>
+      <repository
+          url="https://bndtools.jfrog.io/bndtools/update-latest/"/>
+      <repository
+          url="http://devel.data-in-motion.biz/public/repository/gecko/release/geckoEMF.eclipse.tooling/"/>
+      <repository
+          url="http://boothen.github.io/Json-Eclipse-Plugin/"/>
+      <repository
+          url="http://download.eclipse.org/releases/2023-03"/>
+      <repository
+          url="http://hallvard.github.io/plantuml/"/>
+    </setupTask>
+    <description>Gecko.io IDE setup for Eclipse 2023-03.</description>
   </version>
   <description>Gecko.io IDE Product definition</description>
 </setup:Product>

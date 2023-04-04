@@ -1,2 +1,3 @@
 -snapshot: ${tstamp}-SNAPSHOT
--pom: version=${versionmask;===s;${@version}}	
+-pom: version=${versionmask;===s;${@version}}
+mvn-base-version: ${versionmask;===S;${base-version}}
