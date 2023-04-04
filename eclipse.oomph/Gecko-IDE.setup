@@ -86,7 +86,6 @@
       Path=${installation.location}/eclipse
       Exec=${installation.location}/eclipse/eclipse -data ./../${workspace.name} -clean
       Categories=Application;Development;IDE;
-
     </content>
   </setupTask>
   <setupTask
@@ -104,6 +103,7 @@
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.oomph.setup.ui/p2.startup.tasks"
         value="NEVER"/>
+
     <setupTask
         xsi:type="setup:PreferenceTask"
         key="/instance/org.eclipse.oomph.setup.ui/skip.startup.tasks"
