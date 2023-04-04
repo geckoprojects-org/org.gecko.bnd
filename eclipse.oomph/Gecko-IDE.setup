@@ -564,10 +564,6 @@
       <repository
           url="http://hallvard.github.io/plantuml/"/>
     </setupTask>
-    <setupTask
-        xsi:type="setup:TextModifyTask">
-      <modification/>
-    </setupTask>
     <description>Gecko.io IDE setup for Eclipse 2023-03.</description>
   </version>
   <description>Gecko.io IDE Product definition</description>
