@@ -37,22 +37,17 @@
       label="Workspace name"/>
   <setupTask
       xsi:type="setup:VariableTask"
-      id="var.workspace.path"
-      name="workspace.path"
-      defaultValue="./../"
-      storageURI="scope://Workspace"
-      label="Workspace path">
-    <description>The workspace path</description>
+      id="var.data"
+      type="BOOLEAN"
+      name="use.data.folder"
+      defaultValue="true"
+      storageURI="scope://Installation"
+      label="Use -data property">
+    <description>Variable wether to use the data folder variable or not</description>
   </setupTask>
   <setupTask
       xsi:type="setup:CompoundTask"
       name="Eclipse.ini">
-    <setupTask
-        xsi:type="setup:EclipseIniTask"
-        option="-data"
-        value="${workspace.path}${workspace.name}">
-      <description>Set workspace path</description>
-    </setupTask>
     <setupTask
         xsi:type="setup:EclipseIniTask"
         option="-perspective"
@@ -64,6 +59,17 @@
         option="-Xmx"
         value="4G"
         vm="true"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:CompoundTask"
+      filter="(use.data.folder=true)"
+      name="Eclipse.ini Workspace">
+    <setupTask
+        xsi:type="setup:EclipseIniTask"
+        option="-data"
+        value="./../${workspace.name}">
+      <description>Set workspace path</description>
+    </setupTask>
   </setupTask>
   <setupTask
       xsi:type="setup:ResourceCreationTask"
@@ -557,6 +563,10 @@
           url="http://download.eclipse.org/releases/2023-03"/>
       <repository
           url="http://hallvard.github.io/plantuml/"/>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:TextModifyTask">
+      <modification/>
     </setupTask>
     <description>Gecko.io IDE setup for Eclipse 2023-03.</description>
   </version>
