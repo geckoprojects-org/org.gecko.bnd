@@ -46,6 +46,9 @@ mvn-base-version: ${versionmask;===s;${project-version}}
 # Activate baselining per default to de-activate set 'dimBaselining: false'
 dimcBaselining: true
 
+# Activates the release to maven central (sonartype repsectivly)
+mavenCentral: true
+
 #DIMC Nexus release repository    
 -plugin.dimrelease: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
@@ -92,5 +95,7 @@ releaseNotNeeded: \
 		${.}/releng/snapshot.bnd\
 	},\
 	${if;${env;GNUPG_PASSPHRASE};\
-		${.}/releng/central.bnd\
+		${if;${mavenCentral};\
+			${.}/releng/central.bnd\
+		}	
 	}	
