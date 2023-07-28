@@ -102,6 +102,6 @@ releaseNotNeeded: \
 	},\
 	${if;${env;GNUPG_PASSPHRASE};\
 		${if;${mavenCentral};\
-			${.}/releng/central.bnd\
-		}	
+		${.}/releng/central.bnd\
+		}\
 	}	
