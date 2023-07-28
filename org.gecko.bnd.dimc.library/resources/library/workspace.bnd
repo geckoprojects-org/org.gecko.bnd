@@ -79,7 +79,7 @@ nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
 releaseNotNeeded: \
 	${if;${def;Bundle-Version};\
-		${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${base-version}));REPOS};\
+		${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${Bundle-Version}));REPOS};\
 	false}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
