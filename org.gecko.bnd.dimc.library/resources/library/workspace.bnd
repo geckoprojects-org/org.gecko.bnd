@@ -1,7 +1,7 @@
-Bundle-DocURL: https://github.com/geckoprojects-org/${github-project}
-Bundle-SCM: url=https://github.com/geckoprojects-org/${github-project}, \
-	connection=scm:git:https://github.com/geckoprojects-org/${github-project}.git, \
-	developerConnection=scm:git:git@github.com:geckoprojects-org/${github-project}.git
+Bundle-DocURL: https://github.com/${github-group}/${github-project}
+Bundle-SCM: url=https://github.com/${github-group}/${github-project}, \
+	connection=scm:git:https://github.com/${github-group}/${github-project}.git, \
+	developerConnection=scm:git:git@github.com:${github-group}/${github-project}.git
 Bundle-Version: ${project-version}
 Bundle-License: Eclipse Public License 2.0
 Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
@@ -46,11 +46,20 @@ mvn-base-version: ${versionmask;===s;${project-version}}
 # Activate baselining per default to de-activate set 'dimBaselining: false'
 dimcBaselining: true
 
+# Activates the release to maven central (sonartype repsectivly)
+mavenCentral: true
+
+github-group: geckoprojects-org
+
+nexus-snapshot: https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/
+nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
+
+
 #DIMC Nexus release repository    
 -plugin.dimrelease: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
-		snapshotUrl=https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/;\
-		releaseUrl=https://devel.data-in-motion.biz/nexus/repository/dim-release/;\
+		snapshotUrl=${nexus-snapshot};\
+		releaseUrl=${nexus-release};\
 		name='DIM_Release'
 
 # Ignore files for baselining
@@ -70,7 +79,7 @@ dimcBaselining: true
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
 releaseNotNeeded: \
 	${if;${def;Bundle-Version};\
-		${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${base-version}));REPOS};\
+		${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${Bundle-Version}));REPOS};\
 	false}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
@@ -92,5 +101,7 @@ releaseNotNeeded: \
 		${.}/releng/snapshot.bnd\
 	},\
 	${if;${env;GNUPG_PASSPHRASE};\
+		${if;${mavenCentral};\
 		${.}/releng/central.bnd\
+		}\
 	}	
