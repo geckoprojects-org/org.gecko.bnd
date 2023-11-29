@@ -1,4 +1,10 @@
--include: https://raw.githubusercontent.com/osgi/osgi-test/main/examples/osgi-test-example-bndworkspace/cnf/ext/test.bnd
+
+jupiter.version: 5.10.1
+platform.version: 1.10.1
+osgi.test.version: 1.2.1
+mockito.version: 4.11.0
+assertj.version: 3.24.2
+bytebuddy.version: 1.14.9
 
 -resourceonly: true
 -sources: false
