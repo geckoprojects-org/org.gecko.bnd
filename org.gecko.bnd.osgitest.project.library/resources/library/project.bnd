@@ -5,7 +5,6 @@ Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.
 test-path: \
 	${junit},\
 	${mockito},\
-	org.mockito.junit-jupiter;version=latest,\
 	${osgitest}
 	
 -require-bnd: "(version>=6.3.1)"

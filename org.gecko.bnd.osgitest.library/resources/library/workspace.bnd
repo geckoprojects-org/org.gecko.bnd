@@ -1,5 +1,3 @@
--include: https://raw.githubusercontent.com/osgi/osgi-test/main/examples/osgi-test-example-bndworkspace/cnf/ext/test.bnd
-
 -plugin.junit5: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
 		releaseUrl			= "https://repo.maven.apache.org/maven2/"; \
@@ -9,17 +7,29 @@
 		readOnly            = true;\
 		name="OSGi-Test Dependencies"
 		
-
-jupiter.version: 5.9.1
-platform.version: 1.9.1
-osgi.test.version: 1.2.1
-mockito.version: 4.11.0
-assertj.version: 3.24.2
-bytebuddy.version: 1.14.1
-
 -testpath.junit: \
 	${junit},\
-	${mockito},\
-	org.mockito.junit-jupiter;version=latest
+	${mockito}	
 
--require-bnd: "(version>=6.3.1)"
+-runsystempackages.objenesis: sun.misc,sun.reflect
+-require-bnd: "(version>=6.4.0)"
+
+junit: \
+	junit-platform-commons;version=latest,\
+	junit-platform-engine;version=latest,\
+	assertj-core;version=latest,\
+	org.opentest4j;version=latest,\
+	org.apiguardian:apiguardian-api;version=latest,\
+	junit-jupiter-api;version=latest,\
+	junit-jupiter-engine;version=latest,\
+	junit-jupiter-params;version=latest
+
+mockito: org.mockito.mockito-core;version=latest,\
+	org.mockito.junit-jupiter;version=latest,\
+	net.bytebuddy.byte-buddy;version=latest,\
+	org.objenesis;version=latest
+	
+osgitest: \
+	org.osgi.test.common;version=latest,\
+	org.osgi.test.junit5;version=latest,\
+	org.osgi.test.assertj.framework;version=latest

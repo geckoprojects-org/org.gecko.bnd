@@ -15,12 +15,6 @@ javac.target: 11
 		name = Local; \
 		pretty = true; \
 		local = ${build}/local
-
--plugin.2.Templates: \
-	aQute.bnd.deployer.repository.LocalIndexedRepo; \
-		name = Templates; \
-		pretty = true; \
-		local = ${build}/templates
 		
 -plugin.1.Temp: \
 	aQute.bnd.deployer.repository.LocalIndexedRepo; \
@@ -30,14 +24,14 @@ javac.target: 11
         
 -groupid: org.geckoprojects.bnd
 
-base-version: 1.3.1.SNAPSHOT
+base-version: 1.4.0.SNAPSHOT
 
 github-project: org.gecko.bnd
 category: ccc/Gecko OSGi Standard Templates
 osgi-test-category: ccc/OSGi-Test & JUnit5 Jupiter
 
 # Find out if the current Bundle Version is already deployed in any repository (excluding the Workspace)
-releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${version}));REPOS}
+releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version=${Bundle-Version}));REPOS}
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
 -maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
