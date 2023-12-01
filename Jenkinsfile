@@ -15,6 +15,7 @@ pipeline  {
             }
             steps {
                 echo "Building branch ${env.BRANCH_NAME}"
+                sh "mkdir -p cnf/release"
                 sh "mkdir -p cnf/release-ws"
                 sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/org.geckoprojects.bnd.template --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "mkdir -p $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template"
