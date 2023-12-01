@@ -24,7 +24,6 @@ javac.target: 11
         
 -groupid: org.geckoprojects.bnd
 
-
 base-version: 1.4.0.SNAPSHOT
 
 github-project: org.gecko.bnd
