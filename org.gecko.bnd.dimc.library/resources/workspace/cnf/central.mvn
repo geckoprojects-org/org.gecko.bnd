@@ -140,3 +140,5 @@ org.freemarker:freemarker:2.3.32
 org.geckoprojects.bnd:org.gecko.bnd.dimc.library:${mvn-base-version}
 org.geckoprojects.bnd:org.gecko.bnd.jacoco.library:${mvn-base-version}
 org.geckoprojects.bnd:org.gecko.bnd.osgitest.library:${mvn-base-version}
+
+org.bndtools:org.bndtools.templates.osgi:${bndversion}
