@@ -1,7 +1,8 @@
 -plugin.sonatype: \
 	aQute.bnd.repository.maven.provider.MavenBndRepository;\
 		snapshotUrl		= https://oss.sonatype.org/content/repositories/snapshots/;\
-		releaseUrl		= https://oss.sonatype.org/service/local/staging/deploy/maven2/;\
+		releaseUrl		= https://repo1.maven.org/maven2/;\
+		stagingUrl		= https://oss.sonatype.org/service/local/staging/deploy/maven2/;\
 		index			= ${.}/sonatype.maven;\
 		name			= 'Sonatype'
 
