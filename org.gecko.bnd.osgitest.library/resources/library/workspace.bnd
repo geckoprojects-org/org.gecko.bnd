@@ -6,12 +6,7 @@
 		poll.time           = -1;\
 		readOnly            = true;\
 		name="OSGi-Test Dependencies"
-		
--testpath.junit: \
-	${junit},\
-	${mockito}	
 
--runsystempackages.objenesis: sun.misc,sun.reflect
 -require-bnd: "(version>=6.4.0)"
 
 junit: \
