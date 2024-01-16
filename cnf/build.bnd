@@ -24,7 +24,7 @@ javac.target: 11
         
 -groupid: org.geckoprojects.bnd
 
-base-version: 1.4.2.SNAPSHOT
+base-version: 1.4.3.SNAPSHOT
 
 github-project: org.gecko.bnd
 category: ccc/Gecko OSGi Standard Templates
@@ -35,3 +35,5 @@ releaseNotNeeded: ${findproviders;osgi.identity;(&(osgi.identity=${bsn})(version
 
 # If release not needed is empty, no Bundle has been found and for maven we do a release to the remote Repo. If not, we only do a release to the local .m2 Repo
 -maven-release.local: ${if;${def;releaseNotNeeded};local;remote}
+
+-buildrepo: Local
