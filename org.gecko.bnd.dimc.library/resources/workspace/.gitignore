@@ -3,3 +3,5 @@
 generated/
 /.metadata/
 /build/
+bin/
+bin_test/
