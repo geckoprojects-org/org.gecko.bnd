@@ -2,7 +2,10 @@
 -sources: false
 
 -includeresource: resources,\
-	{workspace/cnf/central.mvn=resources/workspace/cnf/central.mvn}
+	{workspace/cnf/central.mvn=resources/workspace/cnf/central.mvn},\
+	{workspace-min/cnf/central.mvn=resources/workspace-min/cnf/central.mvn},\
+	{workspace/gradle.properties=resources/workspace/gradle.properties},\
+	{workspace-min/gradle.properties=resources/workspace-min/gradle.properties}
 
 Provide-Capability: \
 	${gecko-base},\
@@ -13,7 +16,10 @@ Provide-Capability: \
 gecko-base:\
     bnd.library;\
         bnd.library     		= geckoDIMC; \
-        path            		= library
+        path            		= library,\
+    bnd.library;\
+    	bnd.library				= geckoDIMCMin;\
+    	path					= library-min
 
 workspace-template-geckoprojects:\
 	org.bndtools.template;\
@@ -24,7 +30,16 @@ workspace-template-geckoprojects:\
 		dir						= workspace; \
 		icon					= "${icondata}"; \
 		help					= help.xml;\
-		metaType				= help-metatype.xml
+		metaType				= help-metatype.xml,\
+	org.bndtools.template;\
+		org.bndtools.template	= workspace; \
+		engine					= mustache; \
+		name					= Gecko DIM Minimal Workspace; \
+		category				= Workspace Extensions; \
+		dir						= workspace-min; \
+		icon					= "${icondata}"; \
+		help					= help.xml;\
+		metaType				= help-min-metatype.xml
 		
 project-template-osgi-lib:\
 	org.bndtools.template; org.bndtools.template=project;\

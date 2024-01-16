@@ -1,0 +1,22 @@
+plugins {
+  id 'java'
+}
+
+// We need to define a repository for the root project, otherwise Jacoco dependencies cannot be resolved
+repositories {
+  mavenCentral()
+}
+
+subprojects {
+
+    repositories {
+        mavenCentral()
+    }
+    // Allow gradle to enable JUnit support in submodules
+    test {
+        useJUnitPlatform()
+    }
+    
+}
+
+

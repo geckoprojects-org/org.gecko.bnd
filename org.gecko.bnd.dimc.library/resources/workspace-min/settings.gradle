@@ -13,7 +13,7 @@ pluginManagement {
     }
     mavenCentral()
     gradlePluginPortal()
-    rootProject.name="!#project-symbolic-name#!"
+    rootProject.name="-+project-group-id-+"
   }
 }
 plugins {

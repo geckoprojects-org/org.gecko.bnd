@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/org.geckoprojects.bnd.template.workspace.base">
+  <OCD id="org.gecko.bnd.dimc.workspace.base.min" name="Gecko Workspace Minimal Template" description="Gecko Workspace with Data In Motion configuration">
+    <AD id="project-group-id" type="String" name="Project Maven GroupId" description="The Project Maven Group Id (Must start with org.geckoprojects for Gecko-Projects)" default="org.geckoprojects.foo"/>
+  </OCD>
+</metatype:MetaData>

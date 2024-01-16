@@ -24,7 +24,7 @@ javac.target: 11
         
 -groupid: org.geckoprojects.bnd
 
-base-version: 1.4.2.SNAPSHOT
+base-version: 1.4.3.SNAPSHOT
 
 github-project: org.gecko.bnd
 category: ccc/Gecko OSGi Standard Templates

@@ -1,0 +1,58 @@
+Bundle-Version: ${project-version}
+Bundle-License: Eclipse Public License 2.0
+Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
+Bundle-Vendor: Data In Motion Consuling GmbH
+Bundle-ContactAddress: info@datainmotion.com
+
+project-version: ${base-version}.SNAPSHOT
+mvn-base-version: ${versionmask;===s;${project-version}}
+
+# Includes sources from bundle
+-sources: true
+
+# Add proper JPMS module-info
+-jpms-module-info:
+
+#Include license
+-includeresource.license: \
+	META-INF/LICENSE=${.}/LICENSE
+
+# Some default to the buildpath for basix dependencies on OSGi	
+-buildpath.base: \
+    org.osgi.annotation.versioning,\
+    org.osgi.annotation.bundle, \
+    org.osgi.service.component.annotations,\
+    org.osgi.service.metatype.annotations
+
+# Activates the release to maven central (sonartype repsectivly)
+mavenCentral: true
+
+nexus-snapshot: https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/
+nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
+
+
+#DIMC Nexus release repository    
+-plugin.dimrelease: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository;\
+		snapshotUrl=${nexus-snapshot};\
+		releaseUrl=${nexus-release};\
+		name='DIM_Release'
+
+-maven-release: pom
+-pom: true
+-digest: sha256
+
+-releaserepo: Release, DIM_Release
+
+# If the 'release.dir property is set , we make a release release, otherwise we make only a snapshot release
+# As long as we are on Jenkins, we also release to Maven Central
+-include: \
+	${if;${def;release.dir};\
+		${.}/releng/release.bnd;\
+		${.}/releng/snapshot.bnd\
+	},\
+	${if;${env;GNUPG_PASSPHRASE};\
+		${if;${mavenCentral};\
+		${.}/releng/central.bnd\
+		}\
+	}	

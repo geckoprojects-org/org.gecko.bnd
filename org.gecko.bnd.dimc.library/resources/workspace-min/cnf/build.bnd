@@ -1,26 +1,24 @@
 # We include setups for
 #	OSGi-Test Support - gecko-osgitest
-#	DIMC Github-Configuration - gecko-dimc
+#	DIMC minimal Configuration - gecko-dimc
 #	Jacoco Support - gecko-jacoco
 -library: \
-	geckoDIMC,\
+	geckoDIMCMin,\
 	geckoOSGi-Test,\
 	geckoJacoco
 
 # Needed because we enabled library 'gecko-dimc'
 # Activate baselining
-dimcBaselining: true
-github-project: !#project-symbolic-name#!
 base-version: 1.0.0
 
 # Maven Central Group-Id
 # For Geckoprojects the groupid must start with org.geckoprojects
--groupid: !#project-group-id#!
+-groupid: -+project-group-id-+
 
 javac.source: 11
 javac.target: 11
 
--require-bnd "(version>=6.3.1)"
+-require-bnd "(version>=6.4.0)"
 
 -jpms-module-info:
 
