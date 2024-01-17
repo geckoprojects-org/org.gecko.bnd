@@ -9,6 +9,12 @@
 
 -require-bnd: "(version>=6.4.0)"
 
+-testpath.junit: \
+	${junit},\
+	${mockito}	
+
+-runsystempackages.objenesis: sun.misc,sun.reflect
+
 junit: \
 	junit-platform-commons;version=latest,\
 	junit-platform-engine;version=latest,\
