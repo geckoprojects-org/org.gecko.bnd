@@ -67,17 +67,18 @@ nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
 
 # Ignore files for baselining
 -diffignore: *.xml,\
+	module-info.class,\
 	*/pom.properties,\
-	 Git-SHA,\
-	 Bundle-Vendor,\
-	 Bundle-License,\
-	 Bundle-DocURL,\
-	 Bundle-SCM,\
-	 Bundle-Developers,\
-	 Bundle-Copyright,\
-	 Bundle-ContactAddress,\
-	 META-INF/maven/*,\
-	 OSGI-OPT/*
+	Git-SHA,\
+	Bundle-Vendor,\
+	Bundle-License,\
+	Bundle-DocURL,\
+	Bundle-SCM,\
+	Bundle-Developers,\
+	Bundle-Copyright,\
+	Bundle-ContactAddress,\
+	META-INF/maven/*,\
+	OSGI-OPT/*
 	
 -maven-release: pom
 -pom: true
