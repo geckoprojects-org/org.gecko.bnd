@@ -1,0 +1,9 @@
+-include: ${.}/required.bndrun
+
+-buildpath: ${-runbundles}
+-buildpath.extra: \
+	org.osgi.service.condition;version=latest,\
+	org.osgi.service.component.annotations;version=latest,\
+	org.osgi.framework;version=latest,\
+	org.osgi.annotation.versioning;version=latest,\
+	org.osgi.annotation.bundle;version=latest

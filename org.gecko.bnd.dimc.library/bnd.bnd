@@ -11,7 +11,8 @@ Provide-Capability: \
 	${gecko-base},\
 	${workspace-template-geckoprojects},\
 	${project-template-osgi-lib},\
-	${project-template-config}
+	${project-template-config},\
+	${project-template-wslib}
 
 gecko-base:\
     bnd.library;\
@@ -60,6 +61,16 @@ project-template-config:\
 		dir=project/config;\
 		icon="${icondata}"; \
 		help=config-help.xml;\
+		engine=mustache
+		
+project-template-wslib:\
+	org.bndtools.template; org.bndtools.template=project;\
+		name=Worspace Library;\
+		category=${category};\
+		ranking:Double=1001;\
+		dir=project/wslib;\
+		icon="${icondata}"; \
+		help=wslib-help.xml;\
 		engine=mustache
 
 

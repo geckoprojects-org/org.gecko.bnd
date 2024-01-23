@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0">
+  <OCD id="workspace.lib" name="Workspace librarylate" description="Create a workspace library project">
+    <AD id="libraryName" type="String" name="Library Name" description="Name of the library" default="geckoSomething"/>
+    <AD id="libraryRepoName" type="String" name="Library Repository Name" description="The Bndtools Repository Name of the library" default="geckoSomething Dependencies"/>
+    <AD id="libraryBundleName" type="String" name="Library Bundle Name" description="Bundle-Name of the library" default="Bndtools Library geckoSomething"/>
+  </OCD>
+</metatype:MetaData>
+

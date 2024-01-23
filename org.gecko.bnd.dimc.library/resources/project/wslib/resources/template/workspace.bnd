@@ -1,0 +1,9 @@
+-plugin.{{libraryName}}: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository;\
+		releaseUrl			= "https://repo.maven.apache.org/maven2/,https://devel.data-in-motion.biz/nexus/repository/dim-release/"; \
+		snapshotUrl			= "https://devel.data-in-motion.biz/nexus/repository/dim-snapshot/";\
+		index            = "${.}/{{libraryName}}.maven" ;\
+		readOnly            = true;\
+		name="{{libraryRepoName}}"
+		
+-require-bnd: "(version>=7.0.0)"

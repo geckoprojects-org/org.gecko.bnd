@@ -1,0 +1,16 @@
+-resourceonly: true
+-include: ${.}/buildpath.bnd	
+mavendeps: ${sjoin;\n; ${template;-maven-dependencies;${@}}}
+
+-includeresource: resources,\
+	{template/{{libraryName}}.maven=resources/template/{{libraryName}}.maven}	
+	
+Provide-Capability: \
+	${gecko-base}
+
+gecko-base:\
+    bnd.library;\
+        bnd.library     = {{libraryName}}; \
+        path            = template
+Bundle-Name: {{libraryBundleName}}
+Bundle-Description: {{libraryBundleName}}

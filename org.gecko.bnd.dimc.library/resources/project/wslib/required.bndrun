@@ -1,0 +1,5 @@
+-runfw: org.apache.felix.framework
+-runee: JavaSE-17
+
+#example
+-runrequires: \
