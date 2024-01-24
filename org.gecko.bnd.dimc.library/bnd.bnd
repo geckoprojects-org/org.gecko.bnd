@@ -65,7 +65,7 @@ project-template-config:\
 		
 project-template-wslib:\
 	org.bndtools.template; org.bndtools.template=project;\
-		name=Worspace Library;\
+		name=Workspace Library;\
 		category=${category};\
 		ranking:Double=1001;\
 		dir=project/wslib;\
