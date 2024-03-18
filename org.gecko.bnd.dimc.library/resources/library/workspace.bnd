@@ -65,8 +65,8 @@ nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
 		releaseUrl=${nexus-release};\
 		name='DIM_Release'
 
-# Ignore files for baselining
--diffignore: *.xml,\
+dimDiffignore:\
+	*.xml,\
 	module-info.class,\
 	*/pom.properties,\
 	Git-SHA,\
@@ -79,6 +79,9 @@ nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
 	Bundle-ContactAddress,\
 	META-INF/maven/*,\
 	OSGI-OPT/*
+
+# Ignore files for baselining
+-diffignore: ${dimDiffignore}
 	
 -maven-release: pom
 -pom: true
