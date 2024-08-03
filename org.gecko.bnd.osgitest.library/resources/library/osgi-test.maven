@@ -15,6 +15,10 @@ org.junit.platform:junit-platform-commons:${platform.version}
 org.junit.platform:junit-platform-launcher:${platform.version}
 org.junit.platform:junit-platform-engine:${platform.version}
 org.junit.platform:junit-platform-testkit:${platform.version}
+org.junit.platform:junit-platform-suite:${platform.version}
+org.junit.platform:junit-platform-suite-engine:${platform.version}
+org.junit.platform:junit-platform-suite-commons:${platform.version}
+org.junit.platform:junit-platform-suite-api:${platform.version}
 
 # Mockito
 org.mockito:mockito-core:${mockito.version}
