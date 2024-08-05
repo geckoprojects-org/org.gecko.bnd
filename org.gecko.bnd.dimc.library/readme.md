@@ -8,10 +8,10 @@ You simple have to include the Maven Dependency in your setup:
 <dependency>
 	<groupId>org.geckoprojects.bnd</groupId>
 	<artifactId>org.gecko.bnd.dimc.library</artifactId>
-	<version>1.2.x</version>
+	<version>1.6.x</version>
 </dependency>
 
-org.geckoprojects.bnd:org.gecko.bnd.dimc.library:1.2.x
+org.geckoprojects.bnd:org.gecko.bnd.dimc.library:1.6.x
 ```
 
 ## Workspace Template
