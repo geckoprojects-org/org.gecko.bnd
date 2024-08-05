@@ -7,7 +7,7 @@
 		readOnly            = true;\
 		name="OSGi-Test Dependencies"
 
--require-bnd: "(version>=6.4.0)"
+-require-bnd: "(version>=7.0.0)"
 
 -testpath.junit: \
 	${junit},\

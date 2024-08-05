@@ -14,7 +14,7 @@ test-runproperties: \
 	biz.aQute.tester.junit-platform;version=latest,\
 	junit-platform-launcher;version=latest
 
--require-bnd: "(version>=6.3.1)"
+-require-bnd: "(version>=7.0.0)"
 
 ## Runpath and vm args, if Jacoco is enabled
 -include: \

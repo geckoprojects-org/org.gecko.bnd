@@ -1,7 +1,7 @@
 Bundle-Version: ${project-version}
 Bundle-License: Eclipse Public License 2.0
-Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
-Bundle-Vendor: Data In Motion Consuling GmbH
+Bundle-Copyright: Data In Motion Consulting GmbH - All rights reserved
+Bundle-Vendor: Data In Motion Consulting GmbH
 Bundle-ContactAddress: info@datainmotion.com
 
 project-version: ${base-version}.SNAPSHOT

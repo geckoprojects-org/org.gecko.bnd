@@ -4,8 +4,8 @@ Bundle-SCM: url=https://github.com/${github-group}/${github-project}, \
 	developerConnection=scm:git:git@github.com:${github-group}/${github-project}.git
 Bundle-Version: ${project-version}
 Bundle-License: Eclipse Public License 2.0
-Bundle-Copyright: Data In Motion Consuling GmbH - All rights reserved
-Bundle-Vendor: Data In Motion Consuling GmbH
+Bundle-Copyright: Data In Motion Consulting GmbH - All rights reserved
+Bundle-Vendor: Data In Motion Consulting GmbH
 Bundle-ContactAddress: info@datainmotion.com
 Bundle-Developers: \
     sbischof; \
@@ -65,8 +65,8 @@ nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
 		releaseUrl=${nexus-release};\
 		name='DIM_Release'
 
-# Ignore files for baselining
--diffignore: *.xml,\
+dimDiffignore:\
+	*.xml,\
 	module-info.class,\
 	*/pom.properties,\
 	Git-SHA,\
@@ -79,6 +79,9 @@ nexus-release: https://devel.data-in-motion.biz/nexus/repository/dim-release/
 	Bundle-ContactAddress,\
 	META-INF/maven/*,\
 	OSGI-OPT/*
+
+# Ignore files for baselining
+-diffignore: ${dimDiffignore}
 	
 -maven-release: pom
 -pom: true
