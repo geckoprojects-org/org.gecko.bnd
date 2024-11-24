@@ -1,0 +1,22 @@
+# Create Manifest entries for all test-cases. This macro scanns the classes, laso the embedded TCK classes
+Test-Cases: ${classes;HIERARCHY_INDIRECTLY_ANNOTATED;org.junit.platform.commons.annotation.Testable;CONCRETE}
+
+-library: enableOSGi-Test
+
+# Create a bundle path dependecy on the TCK bundle
+-buildpath: \
+	org.osgi.framework;version=latest,\
+	{{impl-name}};version=snapshot,\
+	{{tck-name}}
+
+# Package the TCK jar into our bundle 
+-includeresource: \
+	tck/{{tck-name}}.jar=${repo;{{tck-name}}}
+
+# Declare the class path dependency for the embedded TCK for this bundle	
+Bundle-ClassPath: \
+	tck/{{tck-name}}.jar,\
+	.
+	
+Bundle-Version: 1.0.0.SNAPSHOT
+
