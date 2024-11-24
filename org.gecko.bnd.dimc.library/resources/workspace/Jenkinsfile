@@ -14,8 +14,14 @@ pipeline  {
                 branch 'main' 
             }
             steps {
-                echo "I am building on ${env.BRANCH_NAME}"
-                sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/!#project-symbolic-name#! --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                script {
+                    echo "I am building on ${env.BRANCH_NAME}"
+                    try {
+                        sh "./gradlew clean build release -Drelease.dir=$JENKINS_HOME/repo.gecko/release/!#project-symbolic-name#! --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                    } finally {
+                        junit testResults: '**/generated/test-reports/**/TEST-*.xml', skipPublishingChecks: true
+                    }
+                }
             }
         }
         stage('Snapshot branch release') {
@@ -23,11 +29,16 @@ pipeline  {
                 branch 'snapshot'
             }
             steps  {
-                echo "I am building on ${env.JOB_NAME}"
-                sh "./gradlew clean release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
-                sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/!#project-symbolic-name#!"
-                sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/!#project-symbolic-name#!/*"
-                sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/!#project-symbolic-name#!"
+                script {
+                    echo "I am building on ${env.JOB_NAME}"
+                    try {
+                        sh "./gradlew clean release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                        sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/!#project-symbolic-name#!"
+                        sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/!#project-symbolic-name#!/*"
+                        sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/!#project-symbolic-name#!"
+                    } finally {
+                        junit testResults: '**/generated/test-reports/**/TEST-*.xml', skipPublishingChecks: true
+                    }
             }
         }
     }
