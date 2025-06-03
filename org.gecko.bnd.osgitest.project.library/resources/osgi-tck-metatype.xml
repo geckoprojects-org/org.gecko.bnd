@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="OSGI-INF/l10n/org.gecko.bndtools.templates.emf.model">
+  <OCD id="tck.lib" name="TCK Project Template" description="TCK Project Template using OSGi Test">
+    <AD id="tck-name" type="String" name="BSN TCK" description="Bundle-SymbolicName of the TCK library / bundle"/>
+    <AD id="impl-name" type="String" name="BSN Implementation" description="Bundle-SymbolicName of the implementation requirement, that is tested against the TCK"/>
+  </OCD>
+</metatype:MetaData>
+

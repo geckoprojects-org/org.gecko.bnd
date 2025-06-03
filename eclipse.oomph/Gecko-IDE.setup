@@ -728,8 +728,6 @@
           url="http://download.eclipse.org/releases/2025-03"/>
       <repository
           url="http://hallvard.github.io/plantuml/"/>
-      <repository
-          url="http://hallvard.github.io/plantuml/"/>
     </setupTask>
     <description>Gecko.io IDE setup for Eclipse 2025-03</description>
   </version>

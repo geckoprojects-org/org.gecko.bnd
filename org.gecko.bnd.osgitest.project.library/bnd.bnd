@@ -5,7 +5,8 @@
 
 Provide-Capability: \
 	${gecko-base},\
-	${project-template-osgi-test}
+	${project-template-osgi-test},\
+	${project-template-osgi-tck}
 
 gecko-base:\
     bnd.library;\
@@ -22,6 +23,18 @@ project-template-osgi-test:\
 		dir						= projects/osgi-test;\
 		icon					= "${junit-icon}";\
 		help					= osgi-test-help.xml
+		
+project-template-osgi-tck:\
+	org.bndtools.template;\
+		org.bndtools.template	= project;\
+		name					= OSGi-Test/JUnit5 Integration TCK Test Project;\
+		category				= ${osgi-test-category};\
+		ranking:Double			= 999;\
+		engine					= mustache;\
+		dir						= projects/osgi-tck;\
+		icon					= "${junit-icon}";\
+		help					= osgi-tck-help.xml;\
+		metaType				= osgi-tck-metatype.xml
 
        
 Bundle-Name: Bnd project/workspace library for OSGi-Test and JUnit5 support
