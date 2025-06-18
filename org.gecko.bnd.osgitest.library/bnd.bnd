@@ -10,7 +10,7 @@ bytebuddy.version: 1.14.18
 -sources: false
 
 -includeresource: resources,\
-	{library/osgi-test.maven=resources/library/osgi-test.maven}
+	{library/osgi-test.maven=resources/library/osgi-test.maven};onduplicate:=OVERWRITE
 	
 Provide-Capability: \
 	${gecko-base},\
