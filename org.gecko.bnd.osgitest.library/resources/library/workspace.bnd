@@ -7,10 +7,9 @@
 		readOnly            = true;\
 		name="OSGi-Test Dependencies"
 
--require-bnd: "(version>=7.0.0)"
+-require-bnd: "(version>=7.1.0)"
 
 -testpath.junit: \
-	${junit},\
 	${mockito}	
 
 -runsystempackages.objenesis: sun.misc,sun.reflect
