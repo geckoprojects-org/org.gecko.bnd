@@ -9,6 +9,24 @@ pipeline  {
     }
 
     stages {
+		stage('clean workspace and checkout') {
+			steps {
+				deleteDir()
+				checkout scm
+			}
+		}
+		
+		stage('Make Executable') {
+
+			steps {
+				echo "Marking gradlew as executable"
+
+
+				sh "chmod +x ./gradlew"
+
+			}
+		}
+		
         stage('Main branch release') {
             when { 
                 branch 'main' 
@@ -23,6 +41,7 @@ pipeline  {
                 sh "cp -r cnf/release-ws/* $JENKINS_HOME/repo.gecko/bndtemplates/org.geckoprojects.bnd.template"
             }
         }
+        
         stage('Snapshot branch release') {
             when { 
                 branch 'snapshot'
