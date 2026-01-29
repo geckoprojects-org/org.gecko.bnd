@@ -11,6 +11,15 @@ sonatype_snapshots:     https://production.portal.central.sonatype.com/repositor
 		sonatypeMode    = autopublish;\
 		name			= 'Sonatype'
 
+# Connection settings
+-connection-settings:\
+   server;    id = ${sonatype_release};\
+        password = ${env;SONATYPE_BAERER};\
+          verify = false,\
+   server;    id = ${sonatype_snapshots};\
+        password = ${env;SONATYPE_BAERER};\
+          verify = false
+
 -releaserepo.sonatype: Sonatype
 #We have to substitude the -SNAPSHOT with an empty String for releases
 
