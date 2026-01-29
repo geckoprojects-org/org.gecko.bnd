@@ -29,7 +29,7 @@
 -pom: true
 -digest: sha256
 
--releaserepo: Release-Workspace, Release, DIM_Release
+-releaserepo: Release-Workspace, Release
 
 -include: \
 	${if;${def;release.dir};\
