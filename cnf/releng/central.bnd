@@ -1,5 +1,5 @@
 mavencentral:           https://repo1.maven.org/maven2/
-sonatype_staging:       https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/
+sonatype_staging:       https://production.portal.central.sonatype.com/api/v1/publisher/upload
 sonatype_snapshots:     https://production.portal.central.sonatype.com/repository/maven-snapshots/
 
 -plugin.sonatype: \
@@ -13,7 +13,7 @@ sonatype_snapshots:     https://production.portal.central.sonatype.com/repositor
 
 # Connection settings
 -connection-settings:\
-   server;    id = ${sonatype_release};\
+   server;    id = ${sonatype_staging};\
         password = ${env;SONATYPE_BAERER};\
           verify = false,\
    server;    id = ${sonatype_snapshots};\
