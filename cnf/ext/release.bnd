@@ -29,12 +29,13 @@
 -pom: true
 -digest: sha256
 
--releaserepo: Release-Workspace, Release, DIM_Release
+-releaserepo: Release-Workspace, Release
 
 -include: \
-	${if;${def;release.dir};\
-		${workspace}/cnf/releng/release.bnd;\
-		${workspace}/cnf/releng/snapshot.bnd\
+	${if;\
+		${is;${env;BRANCH_NAME};main};\
+			${workspace}/cnf/releng/release.bnd;\
+			${workspace}/cnf/releng/snapshot.bnd\
 	},\
 	${if;${env;GNUPG_PASSPHRASE};\
 		${workspace}/cnf/releng/central.bnd\
