@@ -12,7 +12,6 @@ sonatype_snapshots:     https://production.portal.central.sonatype.com/repositor
 		name			= 'Sonatype'
 
 -releaserepo.sonatype: Sonatype
-#We have to substitude the -SNAPSHOT with an empty String for releases
 
 -maven-release: pom,\
 	sign;passphrase=${env;GNUPG_PASSPHRASE}
