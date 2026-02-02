@@ -73,8 +73,6 @@ project-template-wslib:\
 		help=wslib-help.xml;\
 		engine=mustache
 
-
-        
 icondata: data:image/gif;base64,${base64;icons/gecko.ico}
 
 Bundle-Name: Bnd library for a Data In Motion setup

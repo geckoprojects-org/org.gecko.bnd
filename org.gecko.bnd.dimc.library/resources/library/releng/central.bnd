@@ -8,7 +8,7 @@ sonatype_snapshots:     https://production.portal.central.sonatype.com/repositor
 		releaseUrl		= ${mavencentral};\
 		stagingUrl		= ${sonatype_staging};\
 		index			= ${.}/sonatype.maven;\
-		sonatypeMode    = ${if;${endswith;${Bundle-Version};SNAPSHOT};none;autopublish};\
+		sonatypeMode    = ${if;${isempty;${-snapshot}};autopublish;none};\
 		name			= 'Sonatype'
 
 -releaserepo.sonatype: Sonatype
