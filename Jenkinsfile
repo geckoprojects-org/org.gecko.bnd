@@ -55,7 +55,7 @@ pipeline  {
             }
             steps  {
                 echo "Building branch ${env.JOB_NAME}"
-                sh "./gradlew release --debug --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
+                sh "./gradlew release --info --stacktrace -Dmaven.repo.local=${WORKSPACE}/.m2"
                 sh "mkdir -p $JENKINS_HOME/repo.gecko/snapshot/org.geckoprojects.bnd.template"
                 sh "rm -rf $JENKINS_HOME/repo.gecko/snapshot/org.geckoprojects.bnd.template/*"
                 sh "cp -r cnf/release/* $JENKINS_HOME/repo.gecko/snapshot/org.geckoprojects.bnd.template"
